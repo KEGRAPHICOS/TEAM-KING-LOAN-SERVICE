@@ -8,7 +8,4 @@ body {
     align-items: center;
     height: 100vh;
     background-color: yellow;
-    background-position: center;
-    background-repeat: repeat; 
-    background-size: cover; 
 }
