@@ -13,7 +13,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
 </head>
 <body>
 <div class="logo-container">
-<img src="Logos\Photoroom-20250214_145924.png" class="logo" alt="logo">
+<img src="Logos/Photoroom-20250214_145924.png" class="logo" alt="logo">
 </div>
 <header>
 TEAM KING LOAN SERVICE
@@ -105,7 +105,7 @@ const amount = parseFloat(document.getElementById("amount").value.replace(/[^0-9
 ''));
 if (!isNaN(amount)) {
 const interest = amount * 0.2;
-document.getElementById("interest").value = `GHS ${interest.toFixed(2)} `;
+document.getElementById("interest").value = `GHS ${interest.toFixed(2)} (20% Interest)`;
 document.getElementById("income").value = `GHS ${(amount + interest).toFixed(2)}
 (Total Payable)`;
 } else {
@@ -176,6 +176,7 @@ function sendViaWhatsApp() {
 </body>
 
 </html>
+
 
 
 
