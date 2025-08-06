@@ -106,7 +106,7 @@ const amount = parseFloat(document.getElementById("amount").value.replace(/[^0-9
 if (!isNaN(amount)) {
 const interest = amount * 0.2;
 document.getElementById("interest").value = `GHS ${interest.toFixed(2)} (20% Interest)`;
-document.getElementById("income").value = `GHS ${(amount + interest).toFixed(2)}
+document.getElementById("income").value = `GHS ${(amount + interest).toFixed(2)} 
 (Total Payable)`;
 } else {
 document.getElementById("interest").value = "";
@@ -116,7 +116,7 @@ document.getElementById("income").value = "";
 function sendViaWhatsApp() {
   const form = document.getElementById("loanForm");
   if (!form.checkValidity()) {
-    alert("Please fill out all required fields before sending the form via WhatsApp.");
+    alert("Please fill out all required fields before clicking the Request Now button");
     return;
   }
 
@@ -166,16 +166,19 @@ function sendViaWhatsApp() {
   
   * *Address:* ${gaddress}
   
-  * *Relationship:* ${grelationship}`
+  * *Relationship:* ${grelationship}
+
+  * *THANK YOU* `
     ;
 
-  const url = `https://wa.me/233540206528?text=${encodeURIComponent(message)}`;
+  const url = `https://wa.me/233542519746?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 }
 </script>
 </body>
 
 </html>
+
 
 
 
