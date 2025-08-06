@@ -116,34 +116,33 @@ document.getElementById("income").value = "";
 }
 }
 function sendViaWhatsApp() {
-const form = document.getElementById("loanForm");
-if (!form.checkValidity()) {
-alert("Please fill out all required fields before sending the form via WhatsApp.");
-return;
-}
-const date = document.getElementById ("date").value;
-const fname = document.getElementById("fname").value;
-const lname = document.getElementById("lname").value;
-const email = document.getElementById("email").value;
-const mphone = document.getElementById("mphone").value;
-const type1 = document.getElementById("type1").value;
-const amount = document.getElementById("amount").value;
-const interest = document.getElementById("interest").value;
-const type = document.getElementById("type").value;
-const income = document.getElementById("income").value;
-const gname = document.getElementById("gname").value;
-const gphone = document.getElementById("gphone").value;
-const gaddress = document.getElementById("gaddress").value;
-const grelationship = document.getElementById("grelationship").value;
-const message = `Loan Application %0AApplicant %0AFirst Name: ${fname}%0ALast
-Name: ${lname}%0AEmail: ${email}%0APhone: ${phone}%0AMomo Number:
-${mphone}%0AMomo Network: ${type1}%0ALoan Amount: ${amount}%0AInterest:
-${interest}%0ALoan Type: ${type}%0ATotal Payable: ${income}%0A%0AGuarantor %0AFull
-Name: ${gname}%0APhone: ${gphone}%0AAddress: ${gaddress}%0ARelationship:
-${grelationship}`;
-const url = `https://wa.me/233540206528?text=${message}`;
-window.open(url, '_blank');
+  const form = document.getElementById("loanForm");
+  if (!form.checkValidity()) {
+    alert("Please fill out all required fields before sending the form via WhatsApp.");
+    return;
+  }
+
+  const date = document.getElementById("date").value;
+  const fname = document.getElementById("fname").value;
+  const lname = document.getElementById("lname").value;
+  const email = document.getElementById("email").value;
+  const mphone = document.getElementById("mphone").value;
+  const type1 = document.getElementById("type1").value;
+  const amount = document.getElementById("amount").value;
+  const interest = document.getElementById("interest").value;
+  const income = document.getElementById("income").value;
+  const type = document.getElementById("type").value;
+  const gname = document.getElementById("gname").value;
+  const gphone = document.getElementById("gphone").value;
+  const gaddress = document.getElementById("gaddress").value;
+  const grelationship = document.getElementById("grelationship").value;
+
+  const message = `Loan Application%0A%0AApplicant Info:%0ADate: ${date}%0AFirst Name: ${fname}%0ALast Name: ${lname}%0AEmail: ${email}%0AMomo Number: ${mphone}%0AMomo Network: ${type1}%0ALoan Amount: ${amount}%0AInterest: ${interest}%0ATotal Payable: ${income}%0ALoan Type: ${type}%0A%0AGuarantor Info:%0AFull Name: ${gname}%0APhone: ${gphone}%0AAddress: ${gaddress}%0ARelationship: ${grelationship}`;
+
+  const url = `https://wa.me/233540206528?text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
 }
 </script>
 </body>
+
 </html>
