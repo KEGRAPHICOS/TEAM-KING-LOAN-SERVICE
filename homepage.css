@@ -63,7 +63,7 @@ font-size: 0.9rem;
 .hero .buttons button {
 display: block;
 width: 60%;
-margin: 0.5rem auto;
+margin: 1rem auto;
 padding: 0.75rem;
 font-size: 1rem;
 border: none;
@@ -198,5 +198,6 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
