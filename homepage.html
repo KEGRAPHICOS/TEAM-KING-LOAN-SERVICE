@@ -106,8 +106,7 @@ const amount = parseFloat(document.getElementById("amount").value.replace(/[^0-9
 ''));
 if (!isNaN(amount)) {
 const interest = amount * 0.2;
-document.getElementById("interest").value = `GHS ${interest.toFixed(2)} (20%
-Interest)`;
+document.getElementById("interest").value = `GHS ${interest.toFixed(2)} `;
 document.getElementById("income").value = `GHS ${(amount + interest).toFixed(2)}
 (Total Payable)`;
 } else {
@@ -137,23 +136,38 @@ function sendViaWhatsApp() {
   const gaddress = document.getElementById("gaddress").value;
   const grelationship = document.getElementById("grelationship").value;
 
-  const message = `Loan Application Applicant Info 
-  Date:${date} 
-  First Name:${fname}
-  Last Name: ${lname}
-  Email: ${email}
-  Momo Number: ${mphone}
-  Momo Network: ${type1}
-  Loan Amount: ${amount}
-  Interest: ${interest}
-  Total Payable: ${income}
-  Loan Type: ${type}
+  const message = `LOAN APPLICATION 
+  APPLICANT'S INFORMATIONS 
   
-  Guarantor Info 
-  Full Name: ${gname}
-  Phone: ${gphone}
-  Address: ${gaddress}
-  Relationship: ${grelationship}`
+  * *Date:* ${date}
+  
+  * *First Name:* ${fname}
+  
+  * *Last Name:* ${lname}
+  
+  * *Email:* ${email}
+  
+  * *Momo Number:* ${mphone}
+  
+  * *Momo Network:* ${type1}
+  
+  * *Loan Amount:* ${amount}
+  
+  * *Interest:* ${interest}
+  
+  * *Total Payable*: ${income}
+  
+  * *Loan Type:* ${type}
+  
+  GUARANTOR'S INFORMATION
+  
+  * *Full Name:* ${gname}
+  
+  * *Phone:* ${gphone}
+  
+  * *Address:* ${gaddress}
+  
+  * *Relationship:* ${grelationship}`
     ;
 
   const url = `https://wa.me/233540206528?text=${encodeURIComponent(message)}`;
@@ -163,6 +177,7 @@ function sendViaWhatsApp() {
 </body>
 
 </html>
+
 
 
 
