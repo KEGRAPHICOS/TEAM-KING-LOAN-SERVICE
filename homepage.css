@@ -163,6 +163,7 @@ text-align:center;
 }
 footer .footer-contact {
 display: flex;
+gap: 0.5rem;
 justify-content: center;
 flex-wrap: wrap;
 }
@@ -197,4 +198,5 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
