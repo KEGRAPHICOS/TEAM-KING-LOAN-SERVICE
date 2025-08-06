@@ -137,7 +137,7 @@ function sendViaWhatsApp() {
   const gaddress = document.getElementById("gaddress").value;
   const grelationship = document.getElementById("grelationship").value;
 
-  const message = `Loan Application%0A%0AApplicant Info Date: ${date}First Name: ${fname}Last Name: ${lname}Email: ${email}%0AMomo Number: ${mphone}Momo Network: ${type1}Loan Amount: ${amount}Interest: ${interest}%0ATotal Payable: ${income}Loan Type: ${type}Guarantor Info Full Name: ${gname}Phone: ${gphone}Address: ${gaddress}Relationship: ${grelationship}`;
+  const message = `Loan Application Applicant Info Date:${date} First Name:${fname}Last Name: ${lname}Email: ${email}Momo Number: ${mphone}Momo Network: ${type1}Loan Amount: ${amount}Interest: ${interest}Total Payable: ${income}Loan Type: ${type}Guarantor Info Full Name: ${gname}Phone: ${gphone}Address: ${gaddress}Relationship: ${grelationship}`;
 
   const url = `https://wa.me/233540206528?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
@@ -146,5 +146,6 @@ function sendViaWhatsApp() {
 </body>
 
 </html>
+
 
 
