@@ -68,7 +68,7 @@ instant pre-approval</p>
 <input type="number" id="amount" placeholder="Loan Amount (GHS)" required
 oninput="calculateInterest()">
 <textarea id="interest" readonly placeholder="20% Interest will appear here"></textarea>
-<input type="text" id="income" placeholder="Total Amount Payable in GHS" readonly>
+<input type="text" id="income" placeholder="Total Amount Payable" readonly>
 <select id="type" required>
 <option value="">Select loan type</option>
 <option>Personal Loan</option>
@@ -154,7 +154,7 @@ function sendViaWhatsApp() {
   
   * *Interest:* ${interest}
   
-  * *Total Payable*: ${income}
+  * *Total Payable Amount*: ${income}
   
   * *Loan Type:* ${type}
   
@@ -178,6 +178,7 @@ function sendViaWhatsApp() {
 </body>
 
 </html>
+
 
 
 
