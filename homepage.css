@@ -152,7 +152,10 @@ border-radius:5px 5px 0px 0px;
 }
 footer i {
 color: white;
+text-decoration: none;   
 }
+
+
 footer sub {
 color: white;
 letter-spacing: 1px;
@@ -198,6 +201,7 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
 
