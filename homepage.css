@@ -139,7 +139,7 @@ margin: 1.5rem auto;
 padding: 0.75rem;
 color: white;
 border: none;
-padding: 12px 20px;
+padding: 12px;
 border-radius: 50px;
 cursor: pointer;
 font-size: 1rem;
@@ -217,6 +217,7 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
 
