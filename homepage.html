@@ -1,205 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Team King Loan Service</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team King Loan Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="homepage.css" />
+  <style>
+    ::placeholder {
+      color: #999;
+    }
 
-<link rel="stylesheet" href="homepage.css">
+    /* Optional: Consistent styling for form */
+    input, select, textarea {
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      max-width: 500px;
+      box-sizing: border-box;
+      font-size: 1rem;
+    }
 
+    button.whatsapp-button {
+      background-color: #25d366;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    button.whatsapp-button:hover {
+      background-color: #1ebe5b;
+    }
+
+    /* Make the form centered */
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
 </head>
 <body>
-<div class="logo-container">
-<img src="Logos/Photoroom-20250214_145924.png" class="logo" alt="logo">
-</div>
-<header>
-TEAM KING LOAN SERVICE
-</header>
-<div class="quote">
-<p>Service To Human Is Service To Jesus</p>
-</div>
 
-<div class="hero">
-<h1>Get Your Instant Loan <br><span>in Minutes</span></h1>
-<p>Fast, secure, and hassle-free loan applications with competitive rates. Your financial
-goals are just one click away.</p>
-<div class="buttons">
-<button onclick="document.getElementById('loan-form').scrollIntoView({ behavior:
-'smooth' });">Click Here To Proceed</button>
-</div>
-</div>
-<section class="features">
-<h2>Why Choose <br>Team King Loan Service?</h2>
-<p>We're committed to making your loan experience simple, fast, and transparent</p>
-<br>
-<hr>
-<div class="feature-item">
-<i class="fas fa-clock"></i>
-<h3>Fast Approval</h3>
-<p>Get approved in as little as 15 minutes with our streamlined process</p>
-</div>
-<div class="feature-item">
-<i class="fas fa-dollar-sign"></i>
-<h3>Competitive Rates</h3>
-<p>We offer some of the lowest interest rates in the market</p>
-</div>
-</section>
-<hr>
-<section class="form-section" id="loan-form">
-<h2>Apply For Your Loan</h2>
-<p style="text-align:center; font-size: 0.85rem; color:#666;">Secure application with
-instant pre-approval</p>
-<h3 style="margin-top:1.5rem;">Applicant's Informations</h3>
-<form id="loanForm"> 
-<input type="date" id="date" placeholder="YYYY-MM-DD">
-<input type="text" id="fname" placeholder="First Namevvvvv" required />
-<input type="text" id="lname" placeholder="Last Name" required />
-<input type="email" id="email" placeholder="Email Address" required />
-<input type="number" id="mphone" placeholder="Momo Number" required />
-<select id="type1" required>
-<option value="">Momo Network</option>
-<option>MTN</option>
-<option>TELECEL</option>
-<option>AIRTEL-TIGO</option>
-</select>
-<input type="number" id="amount" placeholder="Loan Amount (GHS)" required
-oninput="calculateInterest()">
-<textarea id="interest" readonly placeholder="20% Interest will appear here"></textarea>
-<input type="text" id="income" placeholder="Total Amount Payable" readonly>
-<select id="type" required>
-<option value="">Select loan type</option>
-<option>Personal Loan</option>
-<option>Business Loan</option>
-</select>
-<br>
-<hr>
-<h3 style="margin-top:2rem;">Guarantor's Informations</h3>
-<input type="text" id="gname" placeholder="Guarantor's Full Name" required />
-<input type="number" id="gphone" placeholder="Guarantor's Phone Number" required />
-<input type="text" id="gaddress" placeholder="Guarantor's Address" required />
-<input type="text" id="grelationship" placeholder="Relationship" required />
-<button type="button" class="whatsapp-button" onclick="sendViaWhatsApp()">Request
-Now</button>
-</form>
-</section>
-<footer>
-<div class="subscribe">
-<input type="email" placeholder="Your email">
-<a href="index.html" class="subscribe-button">Subscribe</a>
-</div>
-<div class="footer-contact">
-<p><i class="fas fa-phone"></i> 0542519746</p>|
-<p><i class="fas fa-envelope"></i> teamkingloanservice@gmail.com</p>|
-<p><i class="fas fa-map-marker-alt"></i> Accra Ghana</p>
-</div>
-<p>2025-TeamKingLoanService | All rights reserved</p>
-<sub>THIS WEBPAGE WAS CREATED BY ELLIOT KLUTSE CEO OF KE
-GRAPHICOS</sub>
-</footer>
-<script>
-function calculateInterest() {
-const amount = parseFloat(document.getElementById("amount").value.replace(/[^0-9.]/g,
-''));
-if (!isNaN(amount)) {
-const interest = amount * 0.2;
-document.getElementById("interest").value = `GHS ${interest.toFixed(2)} (20% Interest)`;
-document.getElementById("income").value = `GHS ${(amount + interest).toFixed(2)} 
-(Total Payable)`;
-} else {
-document.getElementById("interest").value = "";
-document.getElementById("income").value = "";
-}
-}
-function sendViaWhatsApp() {
-  const form = document.getElementById("loanForm");
-  if (!form.checkValidity()) {
-    alert("Please fill out all required fields before clicking the Request Now button");
-    return;
-  }
+  <div class="logo-container">
+    <img src="Logos/Photoroom-20250214_145924.png" class="logo" alt="logo" />
+  </div>
 
-  const date = document.getElementById("date").value;
-  const fname = document.getElementById("fname").value;
-  const lname = document.getElementById("lname").value;
-  const email = document.getElementById("email").value;
-  const mphone = document.getElementById("mphone").value;
-  const type1 = document.getElementById("type1").value;
-  const amount = document.getElementById("amount").value;
-  const interest = document.getElementById("interest").value;
-  const income = document.getElementById("income").value;
-  const type = document.getElementById("type").value;
-  const gname = document.getElementById("gname").value;
-  const gphone = document.getElementById("gphone").value;
-  const gaddress = document.getElementById("gaddress").value;
-  const grelationship = document.getElementById("grelationship").value;
+  <header>
+    TEAM KING LOAN SERVICE
+  </header>
 
-  const message = `
-  *APPLICANT'S INFORMATIONS* 
-  
-  * *Date:* *${date}*
-  
-  * *First Name:* ${fname}
-  
-  * *Last Name:* ${lname}
-  
-  * *Email:* ${email}
-  
-  * *Momo Number:* ${mphone}
-  
-  * *Momo Network:* ${type1}
-  
-  * *Loan Amount:* ${amount}
-  
-  * *Interest:* ${interest}
-  
-  * *Total Payable Amount*: ${income}
-  
-  * *Loan Type:* ${type}
-  
-  *GUARANTOR'S INFORMATION*
-  
-  * *Full Name:* ${gname}
-  
-  * *Phone:* ${gphone}
-  
-  * *Address:* ${gaddress}
-  
-  * *Relationship:* ${grelationship}
+  <div class="quote">
+    <p>Service To Human Is Service To Jesus</p>
+  </div>
 
-    *THANK YOU* `
-    ;
+  <div class="hero">
+    <h1>Get Your Instant Loan <br><span>in Minutes</span></h1>
+    <p>Fast, secure, and hassle-free loan applications with competitive rates. Your financial goals are just one click away.</p>
+    <div class="buttons">
+      <button onclick="document.getElementById('loan-form').scrollIntoView({ behavior: 'smooth' });">Click Here To Proceed</button>
+    </div>
+  </div>
 
-  const url = `https://wa.me/233542519746?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-}
-</script>
+  <section class="features">
+    <h2>Why Choose <br>Team King Loan Service?</h2>
+    <p>We're committed to making your loan experience simple, fast, and transparent</p>
+    <br>
+    <hr>
+    <div class="feature-item">
+      <i class="fas fa-clock"></i>
+      <h3>Fast Approval</h3>
+      <p>Get approved in as little as 15 minutes with our streamlined process</p>
+    </div>
+    <div class="feature-item">
+      <i class="fas fa-dollar-sign"></i>
+      <h3>Competitive Rates</h3>
+      <p>We offer some of the lowest interest rates in the market</p>
+    </div>
+  </section>
+
+  <hr>
+
+  <section class="form-section" id="loan-form">
+    <h2>Apply For Your Loan</h2>
+    <p style="text-align:center; font-size: 0.85rem; color:#666;">Secure application with instant pre-approval</p>
+
+    <h3 style="margin-top:1.5rem;">Applicant's Information</h3>
+
+    <form id="loanForm">
+
+      <!-- Workaround for date input placeholder -->
+      <input type="text" id="date" placeholder="YYYY-MM-DD"
+        onfocus="(this.type='date')" onblur="if(this.value===''){this.type='text'}" required />
+
+      <input type="text" id="fname" placeholder="First Name" required />
+      <input type="text" id="lname" placeholder="Last Name" required />
+      <input type="email" id="email" placeholder="Email Address" required />
+      <input type="number" id="mphone" placeholder="Momo Number" required />
+
+      <select id="type1" required>
+        <option value="">Momo Network</option>
+        <option>MTN</option>
+        <option>TELECEL</option>
+        <option>AIRTEL-TIGO</option>
+      </select>
+
+      <input type="number" id="amount" placeholder="Loan Amount (GHS)" required oninput="calculateInterest()" />
+      <textarea id="interest" readonly placeholder="20% Interest will appear here"></textarea>
+      <input type="text" id="income" placeholder="Total Amount Payable" readonly />
+
+      <select id="type" required>
+        <option value="">Select loan type</option>
+        <option>Personal Loan</option>
+        <option>Business Loan</option>
+      </select>
+
+      <br><hr>
+
+      <h3 style="margin-top:2rem;">Guarantor's Information</h3>
+      <input type="text" id="gname" placeholder="Guarantor's Full Name" required />
+      <input type="number" id="gphone" placeholder="Guarantor's Phone Number" required />
+      <input type="text" id="gaddress" placeholder="Guarantor's Address" required />
+      <input type="text" id="grelationship" placeholder="Relationship" required />
+
+      <button type="button" class="whatsapp-button" onclick="sendViaWhatsApp()">Request Now</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="subscribe">
+      <input type="email" placeholder="Your email" />
+      <a href="index.html" class="subscribe-button">Subscribe</a>
+    </div>
+
+    <div class="footer-contact">
+      <p><i class="fas fa-phone"></i> 0542519746</p> |
+      <p><i class="fas fa-envelope"></i> teamkingloanservice@gmail.com</p> |
+      <p><i class="fas fa-map-marker-alt"></i> Accra, Ghana</p>
+    </div>
+
+    <p>2025 - Team King Loan Service | All rights reserved</p>
+    <sub>THIS WEBPAGE WAS CREATED BY ELLIOT KLUTSE, CEO OF KE GRAPHICOS</sub>
+  </footer>
+
+  <script>
+    function calculateInterest() {
+      const amount = parseFloat(document.getElementById("amount").value.replace(/[^0-9.]/g, ''));
+      if (!isNaN(amount)) {
+        const interest = amount * 0.2;
+        document.getElementById("interest").value = `GHS ${interest.toFixed(2)} (20% Interest)`;
+        document.getElementById("income").value = `GHS ${(amount + interest).toFixed(2)} (Total Payable)`;
+      } else {
+        document.getElementById("interest").value = "";
+        document.getElementById("income").value = "";
+      }
+    }
+
+    function sendViaWhatsApp() {
+      const form = document.getElementById("loanForm");
+      if (!form.checkValidity()) {
+        alert("Please fill out all required fields before clicking the Request Now button");
+        return;
+      }
+
+      const date = document.getElementById("date").value;
+      const fname = document.getElementById("fname").value;
+      const lname = document.getElementById("lname").value;
+      const email = document.getElementById("email").value;
+      const mphone = document.getElementById("mphone").value;
+      const type1 = document.getElementById("type1").value;
+      const amount = document.getElementById("amount").value;
+      const interest = document.getElementById("interest").value;
+      const income = document.getElementById("income").value;
+      const type = document.getElementById("type").value;
+      const gname = document.getElementById("gname").value;
+      const gphone = document.getElementById("gphone").value;
+      const gaddress = document.getElementById("gaddress").value;
+      const grelationship = document.getElementById("grelationship").value;
+
+      const message = `
+*APPLICANT'S INFORMATION*
+
+*Date:* ${date}  
+
+*First Name:* ${fname}  
+
+*Last Name:* ${lname} 
+
+*Email:* ${email} 
+
+*Momo Number:* ${mphone} 
+
+*Momo Network:* ${type1} 
+
+*Loan Amount:* ${amount} 
+
+*Interest:* ${interest}
+
+*Total Payable:* ${income}
+
+*Loan Type:* ${type}  
+
+
+*GUARANTOR'S INFORMATION* 
+
+*Full Name:* ${gname}
+
+*Phone:* ${gphone} 
+
+*Address:* ${gaddress} 
+
+*Relationship:* ${grelationship}  
+
+*THANK YOU*
+      `;
+
+      const url = `https://wa.me/233542519746?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    }
+  </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
