@@ -113,7 +113,6 @@ text-align: left;
 display: flex;
 flex-direction: column;
 gap: 0.5rem;
-align-items: center;
 }
 .form-section input,
 .form-section select,
@@ -201,6 +200,7 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
 
