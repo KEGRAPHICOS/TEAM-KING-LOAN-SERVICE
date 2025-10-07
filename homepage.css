@@ -43,6 +43,36 @@ padding-top:2px;
 background-color: #ffc107;
 border: 1px solid #1a2a4e;
 }
+
+
+ label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      padding: 10px;
+      width: 250px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="date"]:focus {
+      border-color: #007BFF;
+      outline: none;
+    }
+
+    ::placeholder {
+      color: #aaa;
+    }
+
+
 .hero {
 background: #1a2a4e;
 color: #fff;
@@ -201,6 +231,7 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
 
