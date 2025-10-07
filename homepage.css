@@ -133,7 +133,6 @@ border-radius: 4px;
 border: 1px solid #ccc;
 }
 button.whatsapp-button {
-display: flex;
 background-color: #00500b;
 color: white;
 border: none;
@@ -213,6 +212,7 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
 
