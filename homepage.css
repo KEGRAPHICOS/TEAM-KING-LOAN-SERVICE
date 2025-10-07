@@ -44,15 +44,6 @@ background-color: #ffc107;
 border: 1px solid #1a2a4e;
 }
 
-
- .label {
-      display: block;
-      margin-bottom: 1px;
-      font-weight: bold;
-      font-color: #ffc107;
-    }
-
-   
 .hero {
 background: #1a2a4e;
 color: #fff;
@@ -211,6 +202,7 @@ background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
 
