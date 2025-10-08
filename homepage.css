@@ -157,7 +157,7 @@ background-color: #000000;
 
 /* 🦶 FOOTER (Updated to match body color palette) */
 .site-footer {
-  background: linear-gradient(to bottom, #1a2a4e, #14213d);
+  background: #1a2a4e;
   color: #ffffff;
   padding: 3rem 1.2rem;
   text-align: center;
@@ -310,6 +310,7 @@ background-color: #000000;
     font-size: 1.2rem;
   }
 }
+
 
 
 
