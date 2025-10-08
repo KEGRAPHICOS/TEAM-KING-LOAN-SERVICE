@@ -155,14 +155,15 @@ button.whatsapp-button:hover{
 background-color: #000000;
 }
 
+/* 🦶 FOOTER (Updated to match body color palette) */
 .site-footer {
-  background: radial-gradient(circle at top, #14213d, #0f172a 80%);
+  background: linear-gradient(to bottom, #1a2a4e, #14213d);
   color: #ffffff;
   padding: 3rem 1.2rem;
   text-align: center;
   font-family: 'Poppins', sans-serif;
-  border-top: 4px solid #00b894;
-  box-shadow: 0 -4px 20px rgba(0, 184, 148, 0.2);
+  border-top: 4px solid #ffc107;
+  box-shadow: 0 -4px 20px rgba(26, 42, 78, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -174,7 +175,7 @@ background-color: #000000;
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(0,184,148,0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(255,193,7,0.15), transparent 70%);
   animation: rotateGlow 15s linear infinite;
   z-index: 0;
 }
@@ -196,34 +197,34 @@ background-color: #000000;
 }
 
 .homepage-button {
-  background-color: #00b894;
-  color: #ffffff;
+  background-color: #ffc107;
+  color: #1a2a4e;
   padding: 0.9rem 1.8rem;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 40px;
   transition: all 0.4s ease;
-  box-shadow: 0 4px 10px rgba(0,184,148,0.4);
+  box-shadow: 0 4px 10px rgba(255,193,7,0.4);
 }
 
 .homepage-button:hover {
-  background-color: #ffffff;
-  color: #0f172a;
+  background-color: #1a2a4e;
+  color: #ffffff;
   transform: scale(1.05);
 }
 
 .footer-logo h2 {
   font-size: 1.8rem;
-  color: #ffffff;
+  color: #ffc107;
   margin-bottom: 0.4rem;
 }
 
 .footer-logo h2 span {
-  color: #00b894;
+  color: #e91e63;
 }
 
 .footer-logo p {
-  color: #b2bec3;
+  color: #d1d1d1;
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
 }
@@ -245,7 +246,7 @@ background-color: #000000;
 }
 
 .footer-contact i {
-  color: #00cec9;
+  color: #ffc107;
   font-size: 1.2rem;
 }
 
@@ -265,12 +266,12 @@ background-color: #000000;
 }
 
 .footer-socials a:hover {
-  color: #00b894;
-  border-color: #00b894;
+  color: #ffc107;
+  border-color: #ffc107;
   transform: translateY(-3px);
 }
 
-/* 🧾n Bottom Text */
+/* 🧾 Bottom Text */
 .footer-bottom {
   margin-top: 1.8rem;
   font-size: 0.9rem;
@@ -281,12 +282,12 @@ background-color: #000000;
   display: block;
   margin-top: 0.5rem;
   font-size: 0.8rem;
-  color: #b2bec3;
+  color: #ccc;
 }
 
 .footer-bottom .brand {
-  color: #00cec9;
-  font-weight: 600;
+  color: #ffc107;
+  font-weight: 700;
 }
 
 /* 📱 Responsive */
@@ -309,12 +310,6 @@ background-color: #000000;
     font-size: 1.2rem;
   }
 }
-
-
-
-
-
-
 
 
 
