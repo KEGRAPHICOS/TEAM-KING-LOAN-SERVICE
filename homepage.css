@@ -201,6 +201,7 @@ footer small {
   justify-content: center;
   flex-wrap: wrap;
   margin: 1rem 0;
+  text-decoration:none;
 }
 
 .footer-contact p {
@@ -227,6 +228,7 @@ footer small {
   color: #ccc;
   cursor: pointer;
 }
+
 
 
 
