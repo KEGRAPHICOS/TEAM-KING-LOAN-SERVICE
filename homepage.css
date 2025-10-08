@@ -151,7 +151,7 @@ border: 1px solid #ccc;
 button.whatsapp-button {
 display: block;
 background-color: #00500b;
-margin: 1.5rem auto;
+margin: 1rem auto;
 padding: 0.75rem;
 color: white;
 border: none;
@@ -227,6 +227,7 @@ footer small {
   color: #ccc;
   cursor: pointer;
 }
+
 
 
 
