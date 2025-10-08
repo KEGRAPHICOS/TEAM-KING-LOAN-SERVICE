@@ -190,19 +190,8 @@ display: flex;
 align-items: center;
 gap: 0.3rem;
 }
-.subscribe {
-display: flex;
-gap: 0.5rem;
-margin-top: 1rem;
-margin-bottom:1rem;
-}
-.subscribe input {
-flex: 1;
-padding: 0.5rem;
-border-radius: 4px;
-border: none;
-}
-.subscribe-button {
+
+.homepage-button {
 padding: 0.5rem 1rem;
 background-color: white;
 color: black;
@@ -212,11 +201,12 @@ text-decoration:none ;
 padding-buttom:5px;
 }
 
-.subscribe-button:hover{
+.homepage-button:hover{
 background-color: #00500b;
 cursor: pointer;
 color: #ccc;
 }
+
 
 
 
