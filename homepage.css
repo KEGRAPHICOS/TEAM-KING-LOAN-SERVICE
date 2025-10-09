@@ -264,7 +264,7 @@ background-color: #000000;
 .footer-bottom small {
   display: block;
   margin-top: 0.5rem;
-  font-size: 0.8rem;
+  font-size: 0.5rem;
   color: #ccc;
 }
 
@@ -293,6 +293,7 @@ background-color: #000000;
     font-size: 1.2rem;
   }
 }
+
 
 
 
