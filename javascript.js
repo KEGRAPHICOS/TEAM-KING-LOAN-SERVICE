@@ -16,8 +16,7 @@
         alert("Please fill out all required fields before clicking the Request Now button");
         return;
       }
-
-      const date = document.getElementById("date").value;
+     
       const fname = document.getElementById("fname").value;
       const lname = document.getElementById("lname").value;
       const email = document.getElementById("email").value;
@@ -36,8 +35,6 @@
 *Greetings Sir, I hope you’re doing well. I would like to formally request a loan and I kindly ask for your consideration of my application*     
 
 *APPLICANT'S INFORMATION*
-
-*Date:* ${date}  
 
 *First Name:* ${fname}  
 
