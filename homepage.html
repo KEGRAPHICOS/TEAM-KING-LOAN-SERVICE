@@ -1,167 +1,843 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team King Loan Service</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="homepage.css" />
-  <style> </style>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Apply for a personal or business loan with Team King Loan Service."
+  >
+
+  <title>Apply for a Loan | Team King Loan Service</title>
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="Logos/favicon.png"
+  >
+
+  <!-- Google Fonts -->
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+
+  <!-- Main CSS -->
+  <link
+    rel="stylesheet"
+    href="homepage.css"
+  >
 </head>
+
+
 <body>
 
-  <div class="logo-container">
-    <img src="Logos/Photoroom-20250214_145924.png" class="logo" alt="logo" />
-  </div>
+  <!-- =====================================================
+       HEADER
+       ===================================================== -->
 
-  <header>
-    TEAM KING LOAN SERVICE
+  <header class="site-header">
+
+    <div class="header-container">
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="Team King Loan Service Home"
+      >
+
+        <img
+          src="Logos/Photoroom-20250214_145924.png"
+          alt="Team King Loan Service Logo"
+        >
+
+        <div class="brand-text">
+
+          <strong>TEAM KING</strong>
+
+          <span>LOAN SERVICE</span>
+
+        </div>
+
+      </a>
+
+
+      <a
+        href="index.html"
+        class="back-home"
+      >
+
+        <i class="fas fa-arrow-left"></i>
+
+        <span>Home</span>
+
+      </a>
+
+    </div>
+
   </header>
 
-  <div class="quote">
-    <p>Service To Human Is Service To Jesus</p>
-  </div>
 
-  <div class="hero">
-    <h1>Get Your Instant Loan <br><span>in Minutes</span></h1>
-    <p>Fast, secure, and hassle-free loan applications with competitive rates. Your financial goals are just one click away.</p>
-    <div class="buttons">
-      <button onclick="document.getElementById('loan-form').scrollIntoView({ behavior: 'smooth' });">Click Here To Proceed</button>
-    </div>
-  </div>
+  <!-- =====================================================
+       PAGE INTRODUCTION
+       ===================================================== -->
 
-  <section class="features">
-    <h2>Why Choose <br>Team King Loan Service?</h2>
-    <p>We're committed to making your loan experience simple, fast, and transparent</p>
-    <br>
-    <hr>
-    <div class="feature-item">
-      <i class="fas fa-clock"></i>
-      <h3>Fast Approval</h3>
-      <p>Get approved in as little as 15 minutes with our streamlined process</p>
+  <section class="page-intro">
+
+    <div class="intro-container">
+
+      <div class="intro-label">
+        LOAN APPLICATION
+      </div>
+
+
+      <h1>
+        Apply for your loan
+      </h1>
+
+
+      <p>
+        Complete the application form below with accurate
+        information. Your application will be reviewed
+        after submission.
+      </p>
+
+
+      <div class="security-note">
+
+        <i class="fas fa-shield-halved"></i>
+
+        <span>
+          Your information should be accurate and kept confidential.
+        </span>
+
+      </div>
+
     </div>
-    <div class="feature-item">
-      <i class="fas fa-dollar-sign"></i>
-      <h3>Competitive Rates</h3>
-      <p>We offer some of the lowest interest rates in the market</p>
-    </div>
+
   </section>
 
-  <hr>
 
-  <section class="form-section" id="loan-form">
-    <h2>Apply For Your Loan</h2>
-    <p style="text-align:center; font-size: 0.85rem; color:#666;">Secure application with instant pre-approval</p>
+  <!-- =====================================================
+       APPLICATION FORM
+       ===================================================== -->
 
-    <h3 style="margin-top:1.5rem;">Applicant's Information</h3>
+  <main class="application-wrapper">
 
-    <form id="loanForm">
+    <form
+      id="loanForm"
+      class="loan-form"
+      novalidate
+    >
 
-      <!-- Workaround for date input placeholder -->
-      <input type="text" id="fname" placeholder="First Name" required />
-      <input type="text" id="lname" placeholder="Last Name" required />
-      <input type="email" id="email" placeholder="Email Address" required />
-      <input type="number" id="mphone" placeholder="Momo Number" required />
 
-      <select id="type1" required>
-        <option value="">Momo Network</option>
-        <option>MTN</option>
-        <option>TELECEL</option>
-        <option>AIRTEL-TIGO</option>
-      </select>
+      <!-- =================================================
+           01. APPLICANT INFORMATION
+           ================================================= -->
 
-      <input type="number" id="amount" placeholder="Loan Amount (GHS)" required oninput="calculateInterest()" />
-      <textarea id="interest" readonly placeholder="20% Interest will appear here"></textarea>
-      <input type="text" id="income" placeholder="Total Amount Payable" readonly />
+      <section class="form-card">
 
-      <select id="type" required>
-        <option value="">Select loan type</option>
-        <option>Personal Loan</option>
-        <option>Business Loan</option>
-      </select>
+        <div class="section-heading">
 
-      <br><hr>
+          <div class="section-number">
+            01
+          </div>
 
-      <h3 style="margin-top:2rem;">Guarantor's Information</h3>
-      <input type="text" id="gname" placeholder="Guarantor's Full Name" required />
-      <input type="number" id="gphone" placeholder="Guarantor's Phone Number" required />
-      <input type="text" id="gaddress" placeholder="Guarantor's Address" required />
-      <input type="text" id="grelationship" placeholder="Relationship" required />
+          <div class="section-heading-content">
 
-      <button type="button" class="whatsapp-button" onclick="sendViaWhatsApp()">Request Now</button>
+            <h2>
+              Applicant Information
+            </h2>
+
+            <p>
+              Provide your personal contact details.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- First Name -->
+          <div class="form-group">
+
+            <label for="fname">
+              First Name
+            </label>
+
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              placeholder="Enter your first name"
+              autocomplete="given-name"
+              required
+            >
+
+          </div>
+
+
+          <!-- Last Name -->
+          <div class="form-group">
+
+            <label for="lname">
+              Last Name
+            </label>
+
+            <input
+              type="text"
+              id="lname"
+              name="lname"
+              placeholder="Enter your last name"
+              autocomplete="family-name"
+              required
+            >
+
+          </div>
+
+
+          <!-- Email -->
+          <div class="form-group">
+
+            <label for="email">
+              Email Address
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@email.com"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <!-- Momo -->
+          <div class="form-group">
+
+            <label for="mphone">
+              Momo Number
+            </label>
+
+            <input
+              type="tel"
+              id="mphone"
+              name="mphone"
+              placeholder="e.g. 0240000000"
+              autocomplete="tel"
+              inputmode="tel"
+              required
+            >
+
+          </div>
+
+
+          <!-- Momo Network -->
+          <div class="form-group">
+
+            <label for="type1">
+              Momo Network
+            </label>
+
+            <select
+              id="type1"
+              name="momoNetwork"
+              required
+            >
+
+              <option value="">
+                Select network
+              </option>
+
+              <option value="MTN">
+                MTN
+              </option>
+
+              <option value="TELECEL">
+                TELECEL
+              </option>
+
+              <option value="AIRTEL-TIGO">
+                AIRTEL-TIGO
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           02. LOAN DETAILS
+           ================================================= -->
+
+      <section class="form-card">
+
+        <div class="section-heading">
+
+          <div class="section-number">
+            02
+          </div>
+
+          <div class="section-heading-content">
+
+            <h2>
+              Loan Details
+            </h2>
+
+            <p>
+              Tell us about the loan you are requesting.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- Loan Amount -->
+          <div class="form-group">
+
+            <label for="amount">
+              Loan Amount (GHS)
+            </label>
+
+
+            <div class="input-prefix">
+
+              <span>
+                GHS
+              </span>
+
+              <input
+                type="number"
+                id="amount"
+                name="amount"
+                placeholder="0.00"
+                min="1"
+                step="0.01"
+                inputmode="decimal"
+                required
+              >
+
+            </div>
+
+          </div>
+
+
+          <!-- Loan Type -->
+          <div class="form-group">
+
+            <label for="type">
+              Loan Type
+            </label>
+
+            <select
+              id="type"
+              name="loanType"
+              required
+            >
+
+              <option value="">
+                Select loan type
+              </option>
+
+              <option value="Personal Loan">
+                Personal Loan
+              </option>
+
+              <option value="Business Loan">
+                Business Loan
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <!-- Interest -->
+          <div class="form-group">
+
+            <label for="interest">
+              Interest
+            </label>
+
+            <input
+              type="text"
+              id="interest"
+              name="interest"
+              placeholder="Calculated automatically"
+              readonly
+            >
+
+          </div>
+
+
+          <!-- Total -->
+          <div class="form-group">
+
+            <label for="income">
+              Total Amount Payable
+            </label>
+
+            <input
+              type="text"
+              id="income"
+              name="totalPayable"
+              placeholder="Calculated automatically"
+              readonly
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="calculation-note">
+
+          <i class="fas fa-circle-info"></i>
+
+          <span>
+            The displayed calculation uses the current
+            20% interest setting configured on this website.
+          </span>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           03. GUARANTOR INFORMATION
+           ================================================= -->
+
+      <section class="form-card">
+
+        <div class="section-heading">
+
+          <div class="section-number">
+            03
+          </div>
+
+          <div class="section-heading-content">
+
+            <h2>
+              Guarantor Information
+            </h2>
+
+            <p>
+              Provide the required details of your guarantor.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-grid">
+
+
+          <!-- Guarantor Name -->
+          <div class="form-group">
+
+            <label for="gname">
+              Guarantor's Full Name
+            </label>
+
+            <input
+              type="text"
+              id="gname"
+              name="guarantorName"
+              placeholder="Enter full name"
+              required
+            >
+
+          </div>
+
+
+          <!-- Guarantor Phone -->
+          <div class="form-group">
+
+            <label for="gphone">
+              Guarantor's Phone
+            </label>
+
+            <input
+              type="tel"
+              id="gphone"
+              name="guarantorPhone"
+              placeholder="Enter phone number"
+              inputmode="tel"
+              required
+            >
+
+          </div>
+
+
+          <!-- Guarantor Address -->
+          <div class="form-group full-width">
+
+            <label for="gaddress">
+              Guarantor's Address
+            </label>
+
+            <input
+              type="text"
+              id="gaddress"
+              name="guarantorAddress"
+              placeholder="Enter residential address"
+              required
+            >
+
+          </div>
+
+
+          <!-- Relationship -->
+          <div class="form-group">
+
+            <label for="grelationship">
+              Relationship
+            </label>
+
+            <input
+              type="text"
+              id="grelationship"
+              name="guarantorRelationship"
+              placeholder="e.g. Brother, Sister, Friend"
+              required
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+       <!-- =================================================
+           GHANA CARD VERIFICATION
+           ================================================= -->
+
+      <section class="form-card ghana-card-section">
+
+        <div class="section-heading">
+
+          <div class="section-icon">
+            <i class="fas fa-id-card"></i>
+          </div>
+
+          <div class="section-heading-content">
+
+            <h2>
+              Ghana Card Verification
+            </h2>
+
+            <p>
+              Upload clear pictures of both sides of your Ghana Card.
+            </p>
+
+          </div>
+
+        </div>
+
+
+        <div class="card-upload-grid">
+
+
+          <!-- Ghana Card Front -->
+          <div class="upload-box">
+
+            <label for="ghanaCardFront">
+
+              Ghana Card Front
+
+              <span class="required">
+                *
+              </span>
+
+            </label>
+
+
+            <div class="file-input-wrapper">
+
+              <input
+                type="file"
+                id="ghanaCardFront"
+                name="ghanaCardFront"
+                accept="image/jpeg,image/png,image/webp"
+              >
+
+              <i class="fas fa-cloud-arrow-up"></i>
+
+              <span>
+                Choose front image
+              </span>
+
+            </div>
+
+
+            <small>
+              JPG, PNG or WEBP. Maximum 5MB.
+            </small>
+
+
+            <div
+              id="frontPreview"
+              class="card-preview"
+              aria-live="polite"
+            ></div>
+
+          </div>
+
+
+          <!-- Ghana Card Back -->
+          <div class="upload-box">
+
+            <label for="ghanaCardBack">
+
+              Ghana Card Back
+
+              <span class="required">
+                *
+              </span>
+
+            </label>
+
+
+            <div class="file-input-wrapper">
+
+              <input
+                type="file"
+                id="ghanaCardBack"
+                name="ghanaCardBack"
+                accept="image/jpeg,image/png,image/webp"
+              >
+
+              <i class="fas fa-cloud-arrow-up"></i>
+
+              <span>
+                Choose back image
+              </span>
+
+            </div>
+
+
+            <small>
+              JPG, PNG or WEBP. Maximum 5MB.
+            </small>
+
+
+            <div
+              id="backPreview"
+              class="card-preview"
+              aria-live="polite"
+            ></div>
+
+          </div>
+
+        </div>
+
+
+        <div class="upload-notice">
+
+          <i class="fas fa-circle-exclamation"></i>
+
+          <div>
+
+            <strong>
+              Ghana Card required
+            </strong>
+
+            <p>
+              Both the front and back of your Ghana Card must be uploaded
+              before your loan application can be submitted.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =================================================
+           SUBMIT
+           ================================================= -->
+
+      <section class="submit-card">
+
+        <div class="submit-icon">
+
+          <i class="fas fa-paper-plane"></i>
+
+        </div>
+
+
+        <div class="submit-content">
+
+          <h2>
+            Ready to submit?
+          </h2>
+
+          <p>
+            Review your information before submitting your loan request.
+          </p>
+
+        </div>
+
+
+        <button
+          type="button"
+          id="submitLoanButton"
+          class="submit-button"
+          onclick="sendViaWhatsApp()"
+        >
+
+          <i class="fab fa-whatsapp"></i>
+
+          <span>
+            Request Loan
+          </span>
+
+        </button>
+
+      </section>
+
     </form>
-  </section>
 
-<footer class="site-footer">
-  <div class="footer-container">
-    
-    <div class="footer-top">
-      <a href="index.html" class="homepage-button">🏠 Go to Homepage</a>
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+       ===================================================== -->
+
+  <footer class="site-footer">
+
+    <div class="footer-container">
+
+
+      <div class="footer-top">
+
+
+        <div class="footer-brand">
+
+          <img
+            src="Logos/Photoroom-20250214_145924.png"
+            alt="Team King Loan Service Logo"
+          >
+
+          <div>
+
+            <strong>
+              TEAM KING
+            </strong>
+
+            <span>
+              LOAN SERVICE
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <p>
+          Service To Human Is Service To Jesus
+        </p>
+
+      </div>
+
+
+      <div class="footer-contact">
+
+
+        <a href="tel:0542519746">
+
+          <i class="fas fa-phone"></i>
+
+          <span>
+            054 251 9746
+          </span>
+
+        </a>
+
+
+        <a href="mailto:teamkingloanservice@gmail.com">
+
+          <i class="fas fa-envelope"></i>
+
+          <span>
+            teamkingloanservice@gmail.com
+          </span>
+
+        </a>
+
+
+        <span>
+
+          <i class="fas fa-location-dot"></i>
+
+          <span>
+            Accra, Ghana
+          </span>
+
+        </span>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          &copy; 2026 Team King Loan Service
+        </span>
+
+        <span>
+          <strong>
+            KUAMI ELLIOTT
+          </strong>
+        </span>
+
+      </div>
+
     </div>
 
-    <div class="footer-logo">
-      <h2>TEAM KING <span>LOAN SERVICE</span></h2>
-      <p>Your trusted partner in quick and reliable loans.</p>
-    </div>
-
-    <div class="footer-contact">
-      <p><i class="fas fa-phone-alt"></i> 0542519746</p>
-      <p><i class="fas fa-envelope"></i> teamkingloanservice@gmail.com</p>
-      <p><i class="fas fa-map-marker-alt"></i> Accra, Ghana</p>
-    </div>
-
-    <div class="footer-socials">
-      <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-      <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2026 <strong>Team King Loan Service</strong> | All rights reserved.</p>
-  
-       <small>DESIGNED & BUILT BY <strong>NANA KUAMI</strong> – CEO OF <span class="brand">KE GRAPHICOS</span></small>
-    </div>
-
-  </div>
-</footer>
+  </footer>
 
 
-<script src="javascript.js"></script>
+  <!-- JavaScript -->
+  <script src="javascript.js"></script>
+
 </body>
+
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
