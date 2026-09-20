@@ -277,16 +277,22 @@ function buildWhatsAppMessage() {
         "",
 
         "*APPLICANT INFORMATION*",
+       
 
         `First Name: ${getValue("fname")}`,
+       
 
         `Last Name: ${getValue("lname")}`,
+       
 
         `Email: ${getValue("email")}`,
+       
 
         `Momo Number: ${getValue("mphone")}`,
+       
 
         `Momo Network: ${getValue("type1")}`,
+       
 
         "",
 
@@ -295,14 +301,19 @@ function buildWhatsAppMessage() {
         "",
 
         "*LOAN DETAILS*",
+       
 
         `Loan Amount: GHS ${amount.toFixed(2)}`,
+       
 
         `Interest: GHS ${interest.toFixed(2)} (20%)`,
+       
 
         `Total Payable: GHS ${total.toFixed(2)}`,
+       
 
         `Loan Type: ${getValue("type")}`,
+       
 
         "",
 
@@ -311,14 +322,19 @@ function buildWhatsAppMessage() {
         "",
 
         "*GUARANTOR INFORMATION*",
+       
 
         `Full Name: ${getValue("gname")}`,
+       
 
         `Phone: ${getValue("gphone")}`,
+       
 
         `Address: ${getValue("gaddress")}`,
+       
 
         `Relationship: ${getValue("grelationship")}`,
+       
 
         "",
 
@@ -350,7 +366,6 @@ function buildWhatsAppMessage() {
 
         "",
 
-        "*TEAM KING LOAN SERVICE*",
 
         "Service To Human Is Service To Jesus"
 
