@@ -34,11 +34,9 @@
   padding: 0;
 }
 
-
 html {
   scroll-behavior: smooth;
 }
-
 
 body {
   font-family: "DM Sans", sans-serif;
@@ -47,16 +45,140 @@ body {
   line-height: 1.6;
 }
 
-
 a {
   text-decoration: none;
   color: inherit;
 }
 
-
 img {
   display: block;
   max-width: 100%;
+}
+
+
+/* =========================================================
+   PAGE LOADING SCREEN
+   ========================================================= */
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: var(--navy);
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+.page-loader.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-content {
+  width: min(90%, 360px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.loader-logo {
+  width: 82px;
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 18px;
+  padding: 10px;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.25);
+
+  animation: loaderLogoPulse 1.8s ease-in-out infinite;
+}
+
+.loader-logo img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+.loader-content h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 1.05rem;
+  font-weight: 800;
+
+  letter-spacing: 0.4px;
+}
+
+.loader-content p {
+  margin-top: 6px;
+
+  color: #bfc9d8;
+
+  font-size: 0.68rem;
+}
+
+.loader-spinner {
+  width: 32px;
+  height: 32px;
+
+  margin-top: 22px;
+
+  border: 3px solid rgba(255, 255, 255, 0.20);
+
+  border-top-color: var(--yellow);
+
+  border-radius: 50%;
+
+  animation: loaderSpin 0.8s linear infinite;
+}
+
+@keyframes loaderSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderLogoPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.04);
+  }
 }
 
 
@@ -66,14 +188,16 @@ img {
 
 .topbar {
   width: 100%;
+
   background: var(--white);
+
   border-bottom: 1px solid var(--border);
 }
-
 
 .nav-container {
   width: min(1180px, calc(100% - 40px));
   min-height: 78px;
+
   margin: auto;
 
   display: flex;
@@ -81,46 +205,61 @@ img {
   justify-content: space-between;
 }
 
-
 .brand {
   display: flex;
   align-items: center;
+
   gap: 12px;
 }
-
 
 .brand img {
   width: 52px;
   height: 52px;
+
   object-fit: contain;
 }
-
 
 .brand-text {
   display: flex;
   flex-direction: column;
+
   line-height: 1.1;
 }
 
-
 .brand-text strong {
   font-family: "Manrope", sans-serif;
+
   font-size: 0.95rem;
+
   color: var(--navy);
 }
 
-
 .brand-text span {
   margin-top: 3px;
+
   color: var(--yellow-dark);
+
   font-size: 0.62rem;
   font-weight: 800;
+
   letter-spacing: 1.5px;
 }
 
 
+/* =========================================================
+   NAV APPLY BUTTON
+   ========================================================= */
+
 .nav-apply {
+  position: relative;
+
+  min-width: 105px;
+
   padding: 11px 22px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
   background: var(--navy);
   color: var(--white);
@@ -130,13 +269,19 @@ img {
   font-size: 0.82rem;
   font-weight: 800;
 
-  transition: 0.25s ease;
-}
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 
+  overflow: hidden;
+}
 
 .nav-apply:hover {
   background: var(--yellow);
+
   color: var(--navy);
+
   transform: translateY(-2px);
 }
 
@@ -147,6 +292,7 @@ img {
 
 .hero {
   position: relative;
+
   overflow: hidden;
 
   background:
@@ -165,7 +311,6 @@ img {
   border-bottom: 1px solid var(--border);
 }
 
-
 .hero-container {
   width: min(1180px, calc(100% - 40px));
   min-height: 650px;
@@ -173,6 +318,7 @@ img {
   margin: auto;
 
   display: grid;
+
   grid-template-columns: 1.08fr 0.92fr;
 
   align-items: center;
@@ -190,7 +336,6 @@ img {
 .hero-content {
   max-width: 650px;
 }
-
 
 .eyebrow {
   display: inline-flex;
@@ -210,9 +355,9 @@ img {
 
   font-size: 0.7rem;
   font-weight: 800;
+
   letter-spacing: 0.8px;
 }
-
 
 .eyebrow span {
   width: 7px;
@@ -222,7 +367,6 @@ img {
 
   border-radius: 50%;
 }
-
 
 .hero h1 {
   margin-top: 25px;
@@ -238,12 +382,11 @@ img {
   color: var(--navy);
 }
 
-
 .hero h1 span {
   display: block;
+
   color: var(--yellow-dark);
 }
-
 
 .hero-content > p {
   max-width: 580px;
@@ -271,9 +414,10 @@ img {
   margin-top: 32px;
 }
 
-
 .primary-btn,
 .secondary-btn {
+  position: relative;
+
   min-height: 52px;
 
   display: inline-flex;
@@ -287,43 +431,48 @@ img {
   font-size: 0.88rem;
   font-weight: 800;
 
-  transition: 0.25s ease;
-}
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 
+  overflow: hidden;
+}
 
 .primary-btn {
   gap: 18px;
 
   background: var(--navy);
+
   color: var(--white);
 
-  box-shadow: 0 12px 25px rgba(16, 35, 66, 0.16);
+  box-shadow:
+    0 12px 25px rgba(16, 35, 66, 0.16);
 }
-
 
 .primary-btn span {
   font-size: 1.2rem;
 }
 
-
 .primary-btn:hover {
   background: var(--yellow);
+
   color: var(--navy);
 
   transform: translateY(-2px);
 }
 
-
 .secondary-btn {
   background: var(--white);
+
   color: var(--navy);
 
   border: 1px solid var(--border);
 }
 
-
 .secondary-btn:hover {
   border-color: var(--navy);
+
   transform: translateY(-2px);
 }
 
@@ -334,6 +483,7 @@ img {
 
 .trust-row {
   display: flex;
+
   gap: 35px;
 
   margin-top: 50px;
@@ -342,13 +492,12 @@ img {
   border-top: 1px solid var(--border);
 }
 
-
 .trust-item {
   display: flex;
   flex-direction: column;
+
   gap: 3px;
 }
-
 
 .trust-item strong {
   color: var(--yellow-dark);
@@ -356,7 +505,6 @@ img {
   font-size: 0.75rem;
   font-weight: 900;
 }
-
 
 .trust-item span {
   color: #475467;
@@ -376,10 +524,10 @@ img {
   position: relative;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 }
-
 
 .hero-visual::before {
   content: "";
@@ -394,20 +542,21 @@ img {
   background: rgba(255, 193, 7, 0.13);
 }
 
-
 .visual-card {
   position: relative;
+
   z-index: 2;
 
   width: min(390px, 90%);
 
   padding: 34px;
 
-  background: linear-gradient(
-    145deg,
-    #1b365f,
-    #0b1d39
-  );
+  background:
+    linear-gradient(
+      145deg,
+      #1b365f,
+      #0b1d39
+    );
 
   color: var(--white);
 
@@ -417,7 +566,6 @@ img {
 
   overflow: hidden;
 }
-
 
 .visual-card::after {
   content: "";
@@ -435,9 +583,9 @@ img {
   border: 25px solid rgba(255, 193, 7, 0.15);
 }
 
-
 .visual-top {
   display: flex;
+
   align-items: center;
   justify-content: space-between;
 
@@ -449,7 +597,6 @@ img {
   letter-spacing: 2px;
 }
 
-
 .status-dot {
   width: 9px;
   height: 9px;
@@ -458,7 +605,8 @@ img {
 
   border-radius: 50%;
 
-  box-shadow: 0 0 0 5px rgba(255, 193, 7, 0.12);
+  box-shadow:
+    0 0 0 5px rgba(255, 193, 7, 0.12);
 }
 
 
@@ -473,6 +621,7 @@ img {
   margin-top: 40px;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
@@ -482,9 +631,9 @@ img {
 
   overflow: hidden;
 
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.12);
 }
-
 
 .visual-logo img {
   width: 82px;
@@ -492,7 +641,6 @@ img {
 
   object-fit: contain;
 }
-
 
 .visual-label {
   margin-top: 24px;
@@ -505,7 +653,6 @@ img {
   letter-spacing: 2px;
 }
 
-
 .visual-card h2 {
   margin-top: 8px;
 
@@ -515,7 +662,6 @@ img {
 
   line-height: 1.15;
 }
-
 
 .visual-line {
   width: 50px;
@@ -528,7 +674,6 @@ img {
   border-radius: 10px;
 }
 
-
 .visual-description {
   color: #c6d0df;
 
@@ -538,14 +683,26 @@ img {
 }
 
 
+/* =========================================================
+   APPLY FOR LOAN BUTTON
+   ========================================================= */
+
 .visual-button {
+  position: relative;
+
+  min-width: 145px;
+
   display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
 
   margin-top: 28px;
 
   padding: 12px 18px;
 
   background: var(--yellow);
+
   color: var(--navy);
 
   border-radius: 7px;
@@ -553,12 +710,18 @@ img {
   font-size: 0.8rem;
   font-weight: 800;
 
-  transition: 0.25s ease;
-}
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
 
+  overflow: hidden;
+}
 
 .visual-button:hover {
   background: var(--white);
+
+  transform: translateY(-2px);
 }
 
 
@@ -568,6 +731,7 @@ img {
 
 .floating-box {
   position: absolute;
+
   z-index: 4;
 
   display: flex;
@@ -581,9 +745,9 @@ img {
 
   border-radius: 9px;
 
-  box-shadow: 0 15px 40px rgba(16, 35, 66, 0.12);
+  box-shadow:
+    0 15px 40px rgba(16, 35, 66, 0.12);
 }
-
 
 .floating-box strong {
   color: var(--navy);
@@ -592,7 +756,6 @@ img {
   font-weight: 900;
 }
 
-
 .floating-box span {
   color: var(--muted);
 
@@ -600,12 +763,10 @@ img {
   font-weight: 700;
 }
 
-
 .box-one {
   top: 70px;
   right: 5px;
 }
-
 
 .box-two {
   bottom: 70px;
@@ -619,9 +780,9 @@ img {
 
 .info-strip {
   background: var(--navy);
+
   color: var(--white);
 }
-
 
 .info-container {
   width: min(1180px, calc(100% - 40px));
@@ -633,20 +794,18 @@ img {
   grid-template-columns: repeat(3, 1fr);
 }
 
-
 .info-item {
   min-height: 170px;
 
   padding: 32px;
 
-  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-right:
+    1px solid rgba(255, 255, 255, 0.12);
 }
-
 
 .info-item:last-child {
   border-right: none;
 }
-
 
 .info-number {
   color: var(--yellow);
@@ -655,13 +814,11 @@ img {
   font-weight: 900;
 }
 
-
 .info-item h3 {
   margin-top: 12px;
 
   font-size: 0.98rem;
 }
-
 
 .info-item p {
   margin-top: 7px;
@@ -675,14 +832,14 @@ img {
 
 
 /* =========================================================
-   SMALL PROFESSIONAL FOOTER
+   FOOTER
    ========================================================= */
 
 .site-footer {
   background: #071327;
+
   color: var(--white);
 }
-
 
 .footer-container {
   width: min(1180px, calc(100% - 40px));
@@ -692,15 +849,14 @@ img {
   padding: 22px 0 16px;
 }
 
-
 .footer-brand {
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   gap: 9px;
 }
-
 
 .footer-brand img {
   width: 36px;
@@ -709,7 +865,6 @@ img {
   object-fit: contain;
 }
 
-
 .footer-brand div {
   display: flex;
   flex-direction: column;
@@ -717,13 +872,11 @@ img {
   line-height: 1.05;
 }
 
-
 .footer-brand strong {
   font-family: "Manrope", sans-serif;
 
   font-size: 0.78rem;
 }
-
 
 .footer-brand span {
   margin-top: 2px;
@@ -731,12 +884,10 @@ img {
   color: var(--yellow);
 
   font-size: 0.5rem;
-
   font-weight: 800;
 
   letter-spacing: 1.2px;
 }
-
 
 .footer-contact {
   display: flex;
@@ -755,16 +906,13 @@ img {
   font-size: 0.66rem;
 }
 
-
 .footer-contact a:hover {
   color: var(--yellow);
 }
 
-
 .divider {
   color: #43516a;
 }
-
 
 .footer-bottom {
   display: flex;
@@ -779,13 +927,13 @@ img {
   margin-top: 13px;
   padding-top: 11px;
 
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-top:
+    1px solid rgba(255, 255, 255, 0.07);
 
   color: #69788f;
 
   font-size: 0.58rem;
 }
-
 
 .footer-credit strong {
   color: #a4afbf;
@@ -793,8 +941,136 @@ img {
 
 
 /* =========================================================
+   APPLICATION BUTTON LOADING
+   IMPORTANT
+========================================================= */
+
+/*
+   These selectors work with:
+
+   Apply Now
+   Start Your Application
+   Apply for a Loan
+
+   No extra HTML spinner is required.
+*/
+
+.nav-apply,
+.primary-btn,
+.visual-button {
+  position: relative;
+}
+
+
+/* Prevent clicking while loading */
+
+.application-loading {
+  pointer-events: none !important;
+
+  cursor: wait !important;
+
+  transform: none !important;
+
+  transition: none !important;
+}
+
+
+/* Hide normal text */
+
+.application-loading {
+  color: transparent !important;
+
+  text-shadow: none !important;
+}
+
+
+/*
+   Hide child elements such as
+   the arrow inside Start Your Application.
+*/
+
+.application-loading > * {
+  visibility: hidden !important;
+}
+
+
+/* =========================================================
+   APPLICATION SPINNER
+========================================================= */
+
+.application-loading::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 19px;
+  height: 19px;
+
+  margin-left: -9.5px;
+  margin-top: -9.5px;
+
+  border: 2px solid rgba(255, 255, 255, 0.35);
+
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation:
+    applicationButtonSpin
+    0.7s linear infinite;
+
+  pointer-events: none;
+}
+
+
+/*
+   The visual button has a yellow background,
+   so its spinner needs a dark color.
+*/
+
+.visual-button.application-loading::after {
+  border-color: rgba(16, 35, 66, 0.25);
+
+  border-top-color: var(--navy);
+}
+
+
+/*
+   The navigation button and primary button
+   have navy backgrounds.
+*/
+
+.nav-apply.application-loading::after,
+.primary-btn.application-loading::after {
+  border-color: rgba(255, 255, 255, 0.35);
+
+  border-top-color: #ffffff;
+}
+
+
+/* =========================================================
+   APPLICATION SPINNER ANIMATION
+========================================================= */
+
+@keyframes applicationButtonSpin {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+
+}
+
+
+/* =========================================================
    RESPONSIVE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 900px) {
 
@@ -806,7 +1082,6 @@ img {
     padding: 60px 0;
   }
 
-
   .hero-content {
     max-width: 720px;
 
@@ -815,31 +1090,27 @@ img {
     text-align: center;
   }
 
-
   .hero-actions,
   .trust-row {
     justify-content: center;
   }
 
-
   .hero h1 {
     font-size: clamp(2.8rem, 9vw, 4.5rem);
   }
 
-
   .info-container {
     grid-template-columns: 1fr;
   }
-
 
   .info-item {
     min-height: auto;
 
     border-right: none;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom:
+      1px solid rgba(255, 255, 255, 0.12);
   }
-
 
   .info-item:last-child {
     border-bottom: none;
@@ -857,39 +1128,34 @@ img {
     width: min(100% - 28px, 1180px);
   }
 
-
   .nav-container {
     min-height: 68px;
   }
-
 
   .brand img {
     width: 44px;
     height: 44px;
   }
 
-
   .brand-text strong {
     font-size: 0.82rem;
   }
-
 
   .brand-text span {
     font-size: 0.55rem;
   }
 
-
   .nav-apply {
+    min-width: 92px;
+
     padding: 9px 14px;
 
     font-size: 0.72rem;
   }
 
-
   .hero-container {
     padding: 45px 0;
   }
-
 
   .hero h1 {
     font-size: 3rem;
@@ -897,11 +1163,9 @@ img {
     letter-spacing: -1.8px;
   }
 
-
   .hero-content > p {
     font-size: 0.88rem;
   }
-
 
   .hero-actions {
     flex-direction: column;
@@ -909,12 +1173,10 @@ img {
     width: 100%;
   }
 
-
   .primary-btn,
   .secondary-btn {
     width: 100%;
   }
-
 
   .trust-row {
     gap: 18px;
@@ -922,33 +1184,29 @@ img {
     flex-wrap: wrap;
   }
 
-
   .hero-visual {
     min-height: 430px;
   }
-
 
   .visual-card {
     padding: 27px;
   }
 
-
   .visual-card h2 {
     font-size: 1.7rem;
   }
 
-
   .box-one {
     top: 25px;
+
     right: 0;
   }
 
-
   .box-two {
     bottom: 25px;
+
     left: 0;
   }
-
 
   .footer-contact {
     flex-direction: column;
@@ -956,12 +1214,11 @@ img {
     gap: 5px;
   }
 
-
   .version {
     color: #4f5f7a;
+
     font-size: 0.58rem;
   }
-
 
   .footer-bottom {
     flex-direction: column;

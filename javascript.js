@@ -1,540 +1,788 @@
-"use strict";
-
 /* =========================================================
    TEAM KING LOAN SERVICE
-   Loan Application JavaScript
+   FRONTEND-ONLY LOAN APPLICATION
    ========================================================= */
+
+"use strict";
 
 
 /* =========================================================
-   BACKEND CONFIGURATION
-   =========================================================
+   SETTINGS
+========================================================= */
 
-   If homepage.html and server.js are hosted together:
-       const API_BASE_URL = "";
+const WHATSAPP_NUMBER = "233542519746";
 
-   If homepage.html is hosted on GitHub Pages and your
-   backend is hosted on Render, change this to your Render URL.
-
-   Example:
-   const API_BASE_URL = "https://your-team-king-backend.onrender.com";
-
-   DO NOT put your WhatsApp access token here.
-   ========================================================= */
-
-const API_BASE_URL = "";
+const INTEREST_RATE = 0.20;
 
 
 /* =========================================================
-   CALCULATE LOAN INTEREST
-   ========================================================= */
+   HELPERS
+========================================================= */
+
+function getValue(id) {
+
+    const element =
+        document.getElementById(id);
+
+    return element
+        ? element.value.trim()
+        : "";
+}
+
+
+/* =========================================================
+   LOAN CALCULATION
+========================================================= */
 
 function calculateInterest() {
-    const amountInput = document.getElementById("amount");
-    const interestInput = document.getElementById("interest");
-    const incomeInput = document.getElementById("income");
 
-    if (!amountInput || !interestInput || !incomeInput) {
+    const amountInput =
+        document.getElementById("amount");
+
+    const interestInput =
+        document.getElementById("interest");
+
+    const totalInput =
+        document.getElementById("income");
+
+
+    if (
+        !amountInput ||
+        !interestInput ||
+        !totalInput
+    ) {
         return;
     }
 
-    const amount = parseFloat(
-        amountInput.value.replace(/[^0-9.]/g, "")
-    );
 
-    if (!isNaN(amount) && amount > 0) {
-        const interest = amount * 0.20;
-        const total = amount + interest;
+    const amount =
+        parseFloat(amountInput.value);
+
+
+    if (
+        Number.isFinite(amount) &&
+        amount > 0
+    ) {
+
+        const interest =
+            amount * INTEREST_RATE;
+
+
+        const total =
+            amount + interest;
+
 
         interestInput.value =
             `GHS ${interest.toFixed(2)} (20% Interest)`;
 
-        incomeInput.value =
+
+        totalInput.value =
             `GHS ${total.toFixed(2)} (Total Payable)`;
-    } else {
+
+    }
+
+    else {
+
         interestInput.value = "";
-        incomeInput.value = "";
+
+        totalInput.value = "";
     }
 }
 
 
 /* =========================================================
    GHANA CARD IMAGE PREVIEW
-   ========================================================= */
+   OPTIONAL
+========================================================= */
 
-function previewImage(inputId, previewId) {
-    const input = document.getElementById(inputId);
-    const preview = document.getElementById(previewId);
+function previewImage(
+    inputId,
+    previewId
+) {
 
-    if (!input || !preview) {
+    const input =
+        document.getElementById(inputId);
+
+
+    const preview =
+        document.getElementById(previewId);
+
+
+    if (
+        !input ||
+        !preview
+    ) {
         return;
     }
 
-    input.addEventListener("change", function () {
-        preview.innerHTML = "";
 
-        if (!this.files || !this.files.length) {
-            return;
+    input.addEventListener(
+        "change",
+        function () {
+
+            preview.innerHTML = "";
+
+
+            const file =
+                this.files &&
+                this.files[0];
+
+
+            if (!file) {
+                return;
+            }
+
+
+            const allowedTypes = [
+
+                "image/jpeg",
+
+                "image/png",
+
+                "image/webp"
+
+            ];
+
+
+            if (
+                !allowedTypes.includes(
+                    file.type
+                )
+            ) {
+
+                alert(
+                    "Please select a JPG, PNG or WEBP image."
+                );
+
+
+                this.value = "";
+
+
+                return;
+            }
+
+
+            if (
+                file.size >
+                5 * 1024 * 1024
+            ) {
+
+                alert(
+                    "The Ghana Card image must not exceed 5MB."
+                );
+
+
+                this.value = "";
+
+
+                return;
+            }
+
+
+            const image =
+                document.createElement("img");
+
+
+            const objectUrl =
+                URL.createObjectURL(file);
+
+
+            image.src =
+                objectUrl;
+
+
+            image.alt =
+                "Ghana Card preview";
+
+
+            image.onload = function () {
+
+                URL.revokeObjectURL(
+                    objectUrl
+                );
+
+            };
+
+
+            preview.appendChild(
+                image
+            );
+
         }
-
-        const file = this.files[0];
-
-        if (!file.type.startsWith("image/")) {
-            alert("Please select a valid image file.");
-            this.value = "";
-            return;
-        }
-
-        const image = document.createElement("img");
-
-        image.src = URL.createObjectURL(file);
-        image.alt = "Ghana Card preview";
-
-        image.onload = function () {
-            URL.revokeObjectURL(image.src);
-        };
-
-        preview.appendChild(image);
-    });
+    );
 }
 
 
 /* =========================================================
-   VALIDATE GHANA CARD UPLOADS
-   ========================================================= */
+   BUILD WHATSAPP MESSAGE
+========================================================= */
 
-function validateGhanaCardUploads() {
-    const frontInput = document.getElementById("ghanaCardFront");
-    const backInput = document.getElementById("ghanaCardBack");
+function buildWhatsAppMessage() {
 
-    if (!frontInput || !backInput) {
-        alert("Ghana Card upload fields could not be found.");
-        return false;
-    }
+    calculateInterest();
 
-    /* Front side */
-    if (!frontInput.files || !frontInput.files.length) {
-        alert("Please upload the FRONT of your Ghana Card.");
-        frontInput.focus();
-        return false;
-    }
 
-    /* Back side */
-    if (!backInput.files || !backInput.files.length) {
-        alert("Please upload the BACK of your Ghana Card.");
-        backInput.focus();
-        return false;
-    }
+    const amount =
+        parseFloat(
+            getValue("amount")
+        ) || 0;
 
-    const frontFile = frontInput.files[0];
-    const backFile = backInput.files[0];
 
-    /* Allowed file types */
-    const allowedTypes = [
-        "image/jpeg",
-        "image/png",
-        "image/webp"
-    ];
+    const interest =
+        amount * INTEREST_RATE;
 
-    if (!allowedTypes.includes(frontFile.type)) {
-        alert(
-            "The Ghana Card FRONT must be a JPG, PNG, or WEBP image."
+
+    const total =
+        amount + interest;
+
+
+    const front =
+        document.getElementById(
+            "ghanaCardFront"
         );
-        frontInput.value = "";
-        return false;
-    }
 
-    if (!allowedTypes.includes(backFile.type)) {
-        alert(
-            "The Ghana Card BACK must be a JPG, PNG, or WEBP image."
+
+    const back =
+        document.getElementById(
+            "ghanaCardBack"
         );
-        backInput.value = "";
-        return false;
-    }
 
-    /* Maximum size: 5 MB per image */
-    const maxFileSize = 5 * 1024 * 1024;
 
-    if (frontFile.size > maxFileSize) {
-        alert(
-            "The Ghana Card FRONT image is too large. Maximum size is 5 MB."
+    const frontSelected =
+        !!(
+            front &&
+            front.files &&
+            front.files.length
         );
-        frontInput.value = "";
-        return false;
-    }
 
-    if (backFile.size > maxFileSize) {
-        alert(
-            "The Ghana Card BACK image is too large. Maximum size is 5 MB."
+
+    const backSelected =
+        !!(
+            back &&
+            back.files &&
+            back.files.length
         );
-        backInput.value = "";
-        return false;
-    }
 
-    return true;
+
+    return [
+
+        "*TEAM KING LOAN SERVICE*",
+
+        "",
+
+        "*NEW LOAN APPLICATION*",
+
+        "━━━━━━━━━━━━━━━━━━",
+
+        "",
+
+        "*APPLICANT INFORMATION*",
+
+        `First Name: ${getValue("fname")}`,
+
+        `Last Name: ${getValue("lname")}`,
+
+        `Email: ${getValue("email")}`,
+
+        `Momo Number: ${getValue("mphone")}`,
+
+        `Momo Network: ${getValue("type1")}`,
+
+        "",
+
+        "━━━━━━━━━━━━━━━━━━",
+
+        "",
+
+        "*LOAN DETAILS*",
+
+        `Loan Amount: GHS ${amount.toFixed(2)}`,
+
+        `Interest: GHS ${interest.toFixed(2)} (20%)`,
+
+        `Total Payable: GHS ${total.toFixed(2)}`,
+
+        `Loan Type: ${getValue("type")}`,
+
+        "",
+
+        "━━━━━━━━━━━━━━━━━━",
+
+        "",
+
+        "*GUARANTOR INFORMATION*",
+
+        `Full Name: ${getValue("gname")}`,
+
+        `Phone: ${getValue("gphone")}`,
+
+        `Address: ${getValue("gaddress")}`,
+
+        `Relationship: ${getValue("grelationship")}`,
+
+        "",
+
+        "━━━━━━━━━━━━━━━━━━",
+
+        "",
+
+        "*GHANA CARD*",
+
+        `Front selected: ${
+            frontSelected
+                ? "YES"
+                : "NO"
+        }`,
+
+        `Back selected: ${
+            backSelected
+                ? "YES"
+                : "NO"
+        }`,
+
+        "",
+
+        "_Ghana Card upload is optional._",
+
+        "",
+
+        "━━━━━━━━━━━━━━━━━━",
+
+        "",
+
+        "*TEAM KING LOAN SERVICE*",
+
+        "Service To Human Is Service To Jesus"
+
+    ].join("\n");
 }
 
 
 /* =========================================================
-   GET FORM VALUE SAFELY
-   ========================================================= */
+   SEND APPLICATION TO WHATSAPP
+========================================================= */
 
-function getValue(id) {
-    const element = document.getElementById(id);
+function sendViaWhatsApp() {
 
-    if (!element) {
-        return "";
-    }
-
-    return element.value.trim();
-}
+    const form =
+        document.getElementById(
+            "loanForm"
+        );
 
 
-/* =========================================================
-   SUBMIT LOAN APPLICATION
-   ========================================================= */
+    const button =
+        document.getElementById(
+            "submitLoanButton"
+        );
 
-async function sendViaWhatsApp() {
-
-    const form = document.getElementById("loanForm");
 
     if (!form) {
-        alert("Loan application form could not be found.");
+
+        alert(
+            "Loan application form could not be found."
+        );
+
         return;
     }
 
 
-    /* ---------------------------------------------
-       Validate normal form fields
-       --------------------------------------------- */
+    /* =====================================================
+       VALIDATION
+    ===================================================== */
 
     if (!form.checkValidity()) {
 
         form.reportValidity();
 
-        alert(
-            "Please complete all required fields before submitting your application."
-        );
-
         return;
     }
 
 
-    /* ---------------------------------------------
-       Validate Ghana Card uploads
-       --------------------------------------------- */
-
-    if (!validateGhanaCardUploads()) {
-        return;
-    }
-
-
-    /* ---------------------------------------------
-       Get submit button
-       --------------------------------------------- */
-
-    const submitButton =
-        document.getElementById("submitLoanButton") ||
-        document.querySelector(".submit-button");
-
-
-    /* ---------------------------------------------
-       Prevent multiple submissions
-       --------------------------------------------- */
-
-    if (submitButton && submitButton.disabled) {
-        return;
-    }
-
-
-    /* ---------------------------------------------
-       Get Ghana Card files
-       --------------------------------------------- */
-
-    const frontInput =
-        document.getElementById("ghanaCardFront");
-
-    const backInput =
-        document.getElementById("ghanaCardBack");
-
-    const frontFile =
-        frontInput.files[0];
-
-    const backFile =
-        backInput.files[0];
-
-
-    /* ---------------------------------------------
-       Get applicant information
-       --------------------------------------------- */
-
-    const fname = getValue("fname");
-    const lname = getValue("lname");
-    const email = getValue("email");
-
-    const mphone = getValue("mphone");
-    const type1 = getValue("type1");
-
-
-    /* ---------------------------------------------
-       Get loan information
-       --------------------------------------------- */
-
-    const amount = getValue("amount");
-    const interest = getValue("interest");
-    const income = getValue("income");
-    const type = getValue("type");
-
-
-    /* ---------------------------------------------
-       Get guarantor information
-       --------------------------------------------- */
-
-    const gname = getValue("gname");
-    const gphone = getValue("gphone");
-    const gaddress = getValue("gaddress");
-    const grelationship = getValue("grelationship");
-
-
-    /* ---------------------------------------------
-       Recalculate interest before sending
-       --------------------------------------------- */
+    /* =====================================================
+       CALCULATE LOAN
+    ===================================================== */
 
     calculateInterest();
 
 
-    /* Get updated values */
-    const updatedInterest = getValue("interest");
-    const updatedIncome = getValue("income");
+    /* =====================================================
+       BUILD MESSAGE
+    ===================================================== */
+
+    const message =
+        buildWhatsAppMessage();
 
 
-    /* ---------------------------------------------
-       Create FormData
-       --------------------------------------------- */
-
-    const formData = new FormData();
+    const whatsappUrl =
+        `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
 
-    /* Applicant information */
+    /* =====================================================
+       CHECK GHANA CARD
+    ===================================================== */
 
-    formData.append("fname", fname);
-    formData.append("lname", lname);
-    formData.append("email", email);
-
-    formData.append("mphone", mphone);
-    formData.append("type1", type1);
-
-
-    /* Loan information */
-
-    formData.append("amount", amount);
-    formData.append("interest", updatedInterest || interest);
-    formData.append("income", updatedIncome || income);
-    formData.append("type", type);
+    const front =
+        document.getElementById(
+            "ghanaCardFront"
+        );
 
 
-    /* Guarantor information */
-
-    formData.append("gname", gname);
-    formData.append("gphone", gphone);
-    formData.append("gaddress", gaddress);
-    formData.append("grelationship", grelationship);
+    const back =
+        document.getElementById(
+            "ghanaCardBack"
+        );
 
 
-    /* Ghana Card images */
+    const hasCardImages =
+        !!(
+            (
+                front &&
+                front.files &&
+                front.files.length
+            )
+            ||
+            (
+                back &&
+                back.files &&
+                back.files.length
+            )
+        );
 
-    formData.append(
-        "ghanaCardFront",
-        frontFile
-    );
 
-    formData.append(
-        "ghanaCardBack",
-        backFile
-    );
+    /* =====================================================
+       REQUEST LOAN BUTTON
+    ===================================================== */
+
+    if (button) {
+
+        button.disabled = true;
 
 
-    /* ---------------------------------------------
-       Disable button while submitting
-       --------------------------------------------- */
+        button.classList.add(
+            "loading"
+        );
 
-    if (submitButton) {
 
-        submitButton.disabled = true;
-
-        submitButton.dataset.originalText =
-            submitButton.innerHTML;
-
-        submitButton.innerHTML =
-            "Submitting Application...";
+        button.dataset.originalText =
+            button.innerHTML;
     }
 
 
-    /* ---------------------------------------------
-       Send application to backend
-       --------------------------------------------- */
+    /* =====================================================
+       OPEN WHATSAPP
+    ===================================================== */
 
-    try {
+    setTimeout(
+        function () {
 
-        const response = await fetch(
-            `${API_BASE_URL}/api/applications`,
-            {
-                method: "POST",
-                body: formData
+            const opened =
+                window.open(
+                    whatsappUrl,
+                    "_blank",
+                    "noopener,noreferrer"
+                );
+
+
+            if (!opened) {
+
+                window.location.href =
+                    whatsappUrl;
             }
-        );
+
+        },
+        700
+    );
 
 
-        /* -----------------------------------------
-           Read server response
-           ----------------------------------------- */
+    /* =====================================================
+       RESTORE REQUEST BUTTON
+    ===================================================== */
 
-        let result;
+    setTimeout(
+        function () {
 
-        try {
-            result = await response.json();
-        } catch (jsonError) {
+            if (button) {
 
-            throw new Error(
-                "The server returned an invalid response."
-            );
-        }
+                button.classList.remove(
+                    "loading"
+                );
 
 
-        /* -----------------------------------------
-           Handle server error
-           ----------------------------------------- */
-
-        if (!response.ok) {
-
-            throw new Error(
-                result.message ||
-                result.error ||
-                "Your application could not be submitted."
-            );
-        }
+                button.disabled =
+                    false;
 
 
-        /* -----------------------------------------
-           Successful application
-           ----------------------------------------- */
-
-        alert(
-            result.message ||
-            "Your loan application has been submitted successfully."
-        );
-
-
-        /* -----------------------------------------
-           Reset form
-           ----------------------------------------- */
-
-        form.reset();
+                button.innerHTML =
+                    button.dataset.originalText ||
+                    '<i class="fab fa-whatsapp"></i>' +
+                    '<span class="button-text">' +
+                    'Request Loan' +
+                    '</span>';
+            }
 
 
-        /* Clear calculated fields */
+            if (hasCardImages) {
 
-        const interestInput =
-            document.getElementById("interest");
+                alert(
+                    "WhatsApp has been opened with your " +
+                    "application details. Because this " +
+                    "website has no backend, Ghana Card " +
+                    "images cannot be attached automatically. " +
+                    "Please attach the selected images manually " +
+                    "in WhatsApp before sending."
+                );
 
-        const incomeInput =
-            document.getElementById("income");
+            }
 
-        if (interestInput) {
-            interestInput.value = "";
-        }
+            else {
 
-        if (incomeInput) {
-            incomeInput.value = "";
-        }
+                alert(
+                    "WhatsApp has been opened with your " +
+                    "application details. Please review " +
+                    "the message and tap Send."
+                );
+            }
 
-
-        /* Clear Ghana Card previews */
-
-        const frontPreview =
-            document.getElementById("frontPreview");
-
-        const backPreview =
-            document.getElementById("backPreview");
-
-        if (frontPreview) {
-            frontPreview.innerHTML = "";
-        }
-
-        if (backPreview) {
-            backPreview.innerHTML = "";
-        }
-
-
-    } catch (error) {
-
-        console.error(
-            "Loan application submission error:",
-            error
-        );
-
-
-        alert(
-            error.message ||
-            "An error occurred while submitting your application. Please try again."
-        );
-
-
-    } finally {
-
-        /* -----------------------------------------
-           Re-enable submit button
-           ----------------------------------------- */
-
-        if (submitButton) {
-
-            submitButton.disabled = false;
-
-            submitButton.innerHTML =
-                submitButton.dataset.originalText ||
-                "Request Now";
-        }
-    }
+        },
+        1800
+    );
 }
 
 
 /* =========================================================
-   INITIALIZE PAGE
-   ========================================================= */
+   APPLICATION BUTTON LOADING
+   =========================================================
+   
+   This handles:
+
+   1. APPLY NOW
+   2. START YOUR APPLICATION
+   3. APPLY FOR A LOAN
+
+   The important part is that the normal link action
+   is temporarily stopped so the spinner can actually
+   appear before homepage.html opens.
+========================================================= */
+
+function setupApplicationButtons() {
+
+    const elements =
+        document.querySelectorAll(
+            "a, button"
+        );
+
+
+    elements.forEach(
+        function (element) {
+
+            /* =============================================
+               GET BUTTON TEXT
+            ============================================= */
+
+            const text =
+                element.textContent
+                    .trim()
+                    .replace(/\s+/g, " ")
+                    .toUpperCase();
+
+
+            /* =============================================
+               CHECK APPLICATION BUTTON
+            ============================================= */
+
+            const isApplicationButton =
+                text === "APPLY NOW" ||
+                text === "START YOUR APPLICATION" ||
+                text === "APPLY FOR A LOAN";
+
+
+            if (!isApplicationButton) {
+                return;
+            }
+
+
+            /* =============================================
+               NEVER ANIMATE REQUEST LOAN BUTTON
+            ============================================= */
+
+            if (
+                element.id ===
+                "submitLoanButton"
+            ) {
+                return;
+            }
+
+
+            /* =============================================
+               PREVENT DUPLICATE LISTENER
+            ============================================= */
+
+            if (
+                element.dataset.applicationReady ===
+                "true"
+            ) {
+                return;
+            }
+
+
+            element.dataset.applicationReady =
+                "true";
+
+
+            /* =============================================
+               SAVE DESTINATION
+            ============================================= */
+
+            const destination =
+                element.href ||
+                element.getAttribute("href");
+
+
+            /* =============================================
+               CLICK EVENT
+            ============================================= */
+
+            element.addEventListener(
+                "click",
+                function (event) {
+
+                    /*
+                     * Stop the link from navigating
+                     * immediately.
+                     */
+
+                    event.preventDefault();
+
+
+                    /*
+                     * Stop double clicking.
+                     */
+
+                    if (
+                        element.classList.contains(
+                            "application-loading"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    /* =================================
+                       SHOW SPINNER
+                    ================================= */
+
+                    element.classList.add(
+                        "application-loading"
+                    );
+
+
+                    element.setAttribute(
+                        "aria-disabled",
+                        "true"
+                    );
+
+
+                    /* =================================
+                       WAIT THEN NAVIGATE
+                    ================================= */
+
+                    setTimeout(
+                        function () {
+
+                            if (destination) {
+
+                                window.location.href =
+                                    destination;
+                            }
+
+                        },
+                        700
+                    );
+
+                }
+            );
+
+        }
+    );
+}
+
+
+/* =========================================================
+   PAGE LOADER
+========================================================= */
+
+function setupPageLoader() {
+
+    const loader =
+        document.getElementById(
+            "pageLoader"
+        );
+
+
+    if (!loader) {
+        return;
+    }
+
+
+    window.addEventListener(
+        "load",
+        function () {
+
+            setTimeout(
+                function () {
+
+                    loader.classList.add(
+                        "hide"
+                    );
+
+                },
+                800
+            );
+
+        }
+    );
+}
+
+
+/* =========================================================
+   INITIALIZATION
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
     function () {
 
-        /* -----------------------------------------
-           Loan amount calculation
-           ----------------------------------------- */
+        /* ================================================
+           LOAN CALCULATION
+        ================================================ */
 
-        const amountInput =
-            document.getElementById("amount");
+        const amount =
+            document.getElementById(
+                "amount"
+            );
 
-        if (amountInput) {
 
-            amountInput.addEventListener(
+        if (amount) {
+
+            amount.addEventListener(
                 "input",
                 calculateInterest
             );
 
-            amountInput.addEventListener(
-                "change",
-                calculateInterest
-            );
+
+            calculateInterest();
         }
 
 
-        /* -----------------------------------------
-           Ghana Card previews
-           ----------------------------------------- */
+        /* ================================================
+           GHANA CARD PREVIEWS
+        ================================================ */
 
         previewImage(
             "ghanaCardFront",
             "frontPreview"
         );
+
 
         previewImage(
             "ghanaCardBack",
@@ -542,167 +790,15 @@ document.addEventListener(
         );
 
 
-        /* -----------------------------------------
-           Ghana Card validation on file selection
-           ----------------------------------------- */
-
-        const frontInput =
-            document.getElementById("ghanaCardFront");
-
-        const backInput =
-            document.getElementById("ghanaCardBack");
-
-
-        if (frontInput) {
-
-            frontInput.addEventListener(
-                "change",
-                function () {
-
-                    if (
-                        this.files &&
-                        this.files.length
-                    ) {
-
-                        const file =
-                            this.files[0];
-
-                        const allowedTypes = [
-                            "image/jpeg",
-                            "image/png",
-                            "image/webp"
-                        ];
-
-                        const maxSize =
-                            5 * 1024 * 1024;
-
-
-                        if (
-                            !allowedTypes.includes(
-                                file.type
-                            )
-                        ) {
-
-                            alert(
-                                "Please upload a JPG, PNG, or WEBP image for the Ghana Card FRONT."
-                            );
-
-                            this.value = "";
-
-                            const preview =
-                                document.getElementById(
-                                    "frontPreview"
-                                );
-
-                            if (preview) {
-                                preview.innerHTML = "";
-                            }
-
-                            return;
-                        }
-
-
-                        if (file.size > maxSize) {
-
-                            alert(
-                                "The Ghana Card FRONT image must not exceed 5 MB."
-                            );
-
-                            this.value = "";
-
-                            const preview =
-                                document.getElementById(
-                                    "frontPreview"
-                                );
-
-                            if (preview) {
-                                preview.innerHTML = "";
-                            }
-                        }
-                    }
-                }
-            );
-        }
-
-
-        if (backInput) {
-
-            backInput.addEventListener(
-                "change",
-                function () {
-
-                    if (
-                        this.files &&
-                        this.files.length
-                    ) {
-
-                        const file =
-                            this.files[0];
-
-                        const allowedTypes = [
-                            "image/jpeg",
-                            "image/png",
-                            "image/webp"
-                        ];
-
-                        const maxSize =
-                            5 * 1024 * 1024;
-
-
-                        if (
-                            !allowedTypes.includes(
-                                file.type
-                            )
-                        ) {
-
-                            alert(
-                                "Please upload a JPG, PNG, or WEBP image for the Ghana Card BACK."
-                            );
-
-                            this.value = "";
-
-                            const preview =
-                                document.getElementById(
-                                    "backPreview"
-                                );
-
-                            if (preview) {
-                                preview.innerHTML = "";
-                            }
-
-                            return;
-                        }
-
-
-                        if (file.size > maxSize) {
-
-                            alert(
-                                "The Ghana Card BACK image must not exceed 5 MB."
-                            );
-
-                            this.value = "";
-
-                            const preview =
-                                document.getElementById(
-                                    "backPreview"
-                                );
-
-                            if (preview) {
-                                preview.innerHTML = "";
-                            }
-                        }
-                    }
-                }
-            );
-        }
-
-
-        /* -----------------------------------------
-           Form submit protection
-           ----------------------------------------- */
+        /* ================================================
+           LOAN FORM
+        ================================================ */
 
         const form =
-            document.getElementById("loanForm");
+            document.getElementById(
+                "loanForm"
+            );
+
 
         if (form) {
 
@@ -713,9 +809,24 @@ document.addEventListener(
                     event.preventDefault();
 
                     sendViaWhatsApp();
+
                 }
             );
         }
+
+
+        /* ================================================
+           APPLICATION BUTTONS
+        ================================================ */
+
+        setupApplicationButtons();
+
+
+        /* ================================================
+           PAGE LOADER
+        ================================================ */
+
+        setupPageLoader();
 
     }
 );

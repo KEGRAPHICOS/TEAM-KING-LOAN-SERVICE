@@ -16,12 +16,6 @@
 
   <title>Apply for a Loan | Team King Loan Service</title>
 
-  <link
-    rel="icon"
-    type="image/png"
-    href="Logos/favicon.png"
-  >
-
   <!-- Google Fonts -->
   <link
     rel="preconnect"
@@ -69,11 +63,8 @@
         >
 
         <div class="brand-text">
-
           <strong>TEAM KING</strong>
-
           <span>LOAN SERVICE</span>
-
         </div>
 
       </a>
@@ -83,11 +74,8 @@
         href="index.html"
         class="back-home"
       >
-
         <i class="fas fa-arrow-left"></i>
-
         <span>Home</span>
-
       </a>
 
     </div>
@@ -107,18 +95,15 @@
         LOAN APPLICATION
       </div>
 
-
       <h1>
         Apply for your loan
       </h1>
-
 
       <p>
         Complete the application form below with accurate
         information. Your application will be reviewed
         after submission.
       </p>
-
 
       <div class="security-note">
 
@@ -144,9 +129,7 @@
     <form
       id="loanForm"
       class="loan-form"
-      novalidate
     >
-
 
       <!-- =================================================
            01. APPLICANT INFORMATION
@@ -176,7 +159,6 @@
 
 
         <div class="form-grid">
-
 
           <!-- First Name -->
           <div class="form-group">
@@ -235,7 +217,7 @@
           </div>
 
 
-          <!-- Momo -->
+          <!-- Momo Number -->
           <div class="form-group">
 
             <label for="mphone">
@@ -322,14 +304,12 @@
 
         <div class="form-grid">
 
-
           <!-- Loan Amount -->
           <div class="form-group">
 
             <label for="amount">
               Loan Amount (GHS)
             </label>
-
 
             <div class="input-prefix">
 
@@ -464,7 +444,6 @@
 
         <div class="form-grid">
 
-
           <!-- Guarantor Name -->
           <div class="form-group">
 
@@ -542,8 +521,8 @@
       </section>
 
 
-       <!-- =================================================
-           GHANA CARD VERIFICATION
+      <!-- =================================================
+           04. GHANA CARD
            ================================================= -->
 
       <section class="form-card ghana-card-section">
@@ -561,7 +540,7 @@
             </h2>
 
             <p>
-              Upload clear pictures of both sides of your Ghana Card.
+              Ghana Card upload is optional. You may provide it if requested.
             </p>
 
           </div>
@@ -571,20 +550,12 @@
 
         <div class="card-upload-grid">
 
-
           <!-- Ghana Card Front -->
           <div class="upload-box">
 
             <label for="ghanaCardFront">
-
-              Ghana Card Front
-
-              <span class="required">
-                *
-              </span>
-
+            Front
             </label>
-
 
             <div class="file-input-wrapper">
 
@@ -603,11 +574,9 @@
 
             </div>
 
-
             <small>
-              JPG, PNG or WEBP. Maximum 5MB.
+              Optional. JPG, PNG or WEBP. Maximum 5MB.
             </small>
-
 
             <div
               id="frontPreview"
@@ -622,15 +591,8 @@
           <div class="upload-box">
 
             <label for="ghanaCardBack">
-
-              Ghana Card Back
-
-              <span class="required">
-                *
-              </span>
-
+              Back
             </label>
-
 
             <div class="file-input-wrapper">
 
@@ -649,11 +611,9 @@
 
             </div>
 
-
             <small>
-              JPG, PNG or WEBP. Maximum 5MB.
+              Optional. JPG, PNG or WEBP. Maximum 5MB.
             </small>
-
 
             <div
               id="backPreview"
@@ -673,12 +633,12 @@
           <div>
 
             <strong>
-              Ghana Card required
+              Optional Ghana Card
             </strong>
 
             <p>
-              Both the front and back of your Ghana Card must be uploaded
-              before your loan application can be submitted.
+              Upload the front and/or back only if you want to provide them.
+              Your application can be submitted without the Ghana Card.
             </p>
 
           </div>
@@ -688,7 +648,6 @@
       </section>
 
 
-
       <!-- =================================================
            SUBMIT
            ================================================= -->
@@ -696,9 +655,7 @@
       <section class="submit-card">
 
         <div class="submit-icon">
-
           <i class="fas fa-paper-plane"></i>
-
         </div>
 
 
@@ -715,26 +672,51 @@
         </div>
 
 
-        <button
-          type="button"
-          id="submitLoanButton"
-          class="submit-button"
-          onclick="sendViaWhatsApp()"
-        >
-
-          <i class="fab fa-whatsapp"></i>
-
-          <span>
-            Request Loan
-          </span>
-
-        </button>
+      <button type="submit" class="submit-button" id="submitLoanButton">
+        <i class="fab fa-whatsapp"></i>
+        <span class="button-text">Request Loan</span>
+        <span class="button-loader"></span>
+    </button>
 
       </section>
 
     </form>
 
   </main>
+
+  
+
+
+  <!-- =====================================================
+       FLOATING WHATSAPP AND CALL BUTTON
+       ===================================================== -->
+
+  <!-- FLOATING CONTACT BUTTONS -->
+<div class="floating-contact-buttons">
+
+    <!-- CALL BUTTON -->
+    <a
+        href="tel:+233542519746"
+        class="floating-call"
+        aria-label="Call Team King Loan Service"
+        title="Call us"
+    >
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- WHATSAPP BUTTON -->
+    <a
+        href="https://wa.me/233542519746?text=Hello%20TEAM%20KING%20LOAN%20SERVICE%2C%20I%20would%20like%20to%20make%20an%20inquiry."
+        class="floating-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with Team King Loan Service on WhatsApp"
+        title="Chat with us on WhatsApp"
+    >
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+</div>
 
 
   <!-- =====================================================
@@ -745,28 +727,9 @@
 
     <div class="footer-container">
 
-
       <div class="footer-top">
 
-
         <div class="footer-brand">
-
-          <img
-            src="Logos/Photoroom-20250214_145924.png"
-            alt="Team King Loan Service Logo"
-          >
-
-          <div>
-
-            <strong>
-              TEAM KING
-            </strong>
-
-            <span>
-              LOAN SERVICE
-            </span>
-
-          </div>
 
         </div>
 
@@ -774,44 +737,6 @@
         <p>
           Service To Human Is Service To Jesus
         </p>
-
-      </div>
-
-
-      <div class="footer-contact">
-
-
-        <a href="tel:0542519746">
-
-          <i class="fas fa-phone"></i>
-
-          <span>
-            054 251 9746
-          </span>
-
-        </a>
-
-
-        <a href="mailto:teamkingloanservice@gmail.com">
-
-          <i class="fas fa-envelope"></i>
-
-          <span>
-            teamkingloanservice@gmail.com
-          </span>
-
-        </a>
-
-
-        <span>
-
-          <i class="fas fa-location-dot"></i>
-
-          <span>
-            Accra, Ghana
-          </span>
-
-        </span>
 
       </div>
 
