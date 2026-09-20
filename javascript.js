@@ -10,7 +10,7 @@
    SETTINGS
 ========================================================= */
 
-const WHATSAPP_NUMBER = "233501147019";
+const WHATSAPP_NUMBER = "233542519746";
 
 const INTEREST_RATE = 0.20;
 
