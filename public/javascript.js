@@ -6,7 +6,7 @@
 ========================================================= */
 
 const INTEREST_RATE = 0.20;
-const WHATSAPP_NUMBER = "233542519746";
+const WHATSAPP_NUMBER = "233540206528";
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const ALLOWED_IMAGE_TYPES = [
     "image/jpeg",
