@@ -215,9 +215,8 @@ function createApplicationPDF(application, outputPath) {
 
             const footerY = PAGE_HEIGHT - 38;
             doc.moveTo(MARGIN, footerY).lineTo(PAGE_WIDTH - MARGIN, footerY).strokeColor(COLORS.border).lineWidth(0.7).stroke();
-            doc.font("Helvetica-Bold").fontSize(6.5).fillColor(COLORS.navy).text("TEAM KING LOAN SERVICE", MARGIN, footerY + 10, { width: 200, lineBreak: false });
-            doc.font("Helvetica").fontSize(6).fillColor(COLORS.muted).text("Service To Human Is Service To Jesus", MARGIN, footerY + 20, { width: 250, lineBreak: false });
-            doc.font("Helvetica").fontSize(6).fillColor(COLORS.muted).text("LOAN APPLICATION DOCUMENT • PAGE 1 OF 1", PAGE_WIDTH - MARGIN - 190, footerY + 14, { width: 190, align: "right", lineBreak: false });
+            doc.font("Helvetica").fontSize(5)fillColor(COLORS.muted).text("Service To Human Is Service To Jesus", MARGIN, footerY + 20, { width: 250, lineBreak: false });
+            doc.font("Helvetica").fontSize(5).fillColor(COLORS.muted).text("LOAN APPLICATION DOCUMENT • PAGE 1 OF 1", PAGE_WIDTH - MARGIN - 190, footerY + 14, { width: 190, align: "right", lineBreak: false });
             doc.end();
             stream.on("finish", () => resolve(outputPath));
         } catch (error) {
