@@ -99,7 +99,7 @@ function normalizeApplication(application) {
 }
 
 function drawHeader(doc, application) {
-    const headerHeight = 68;
+    const headerHeight = 60;
     doc.rect(0, 0, PAGE_WIDTH, headerHeight).fill(COLORS.navy);
     doc.rect(0, headerHeight - 4, PAGE_WIDTH, 4).fill(COLORS.gold);
     doc.font("Helvetica-Bold").fontSize(20).fillColor(COLORS.white).text("TEAM KING", MARGIN, 17, { width: 220, lineBreak: false });
@@ -114,18 +114,18 @@ function sectionTitle(doc, title, y) {
     return y + 28;
 }
 function field(doc, label, text, x, y, width) {
-    const height = 38;
+    const height = 35;
     doc.roundedRect(x, y, width, height, 4).fillAndStroke(COLORS.white, COLORS.border);
     doc.font("Helvetica-Bold").fontSize(5.8).fillColor(COLORS.lightText).text(label.toUpperCase(), x + 8, y + 7, { width: width - 16, lineBreak: false });
     doc.font("Helvetica-Bold").fontSize(7.8).fillColor(COLORS.text).text(value(text), x + 8, y + 19, { width: width - 16, height: 12, ellipsis: true, lineBreak: false });
 }
 function fieldNoPlaceholder(doc, label, x, y, width) {
-    const height = 38;
+    const height = 35;
     doc.roundedRect(x, y, width, height, 4).fillAndStroke(COLORS.white, COLORS.border);
     doc.font("Helvetica-Bold").fontSize(5.8).fillColor(COLORS.lightText).text(label.toUpperCase(), x + 8, y + 7, { width: width - 16, lineBreak: false });
 }
 function documentStatus(doc, label, uploaded, x, y, width) {
-    const height = 29;
+    const height = 25;
     doc.roundedRect(x, y, width, height, 4).fillAndStroke(COLORS.white, COLORS.border);
     doc.font("Helvetica-Bold").fontSize(6.2).fillColor(COLORS.text).text(label, x + 8, y + 9, { width: width - 70, lineBreak: false });
     doc.font("Helvetica-Bold").fontSize(6.2).fillColor(uploaded? COLORS.green : COLORS.red).text(uploaded? "UPLOADED" : "NOT UPLOADED", x + width - 65, y + 9, { width: 57, align: "right", lineBreak: false });
@@ -152,7 +152,7 @@ function createApplicationPDF(application, outputPath) {
             doc.font("Helvetica-Bold").fontSize(8).fillColor(COLORS.text).text(formatDateWithLiveTime(data.createdAt), MARGIN + 55, y - 1, { width: 350, lineBreak: false });
             y += 24;
             y = sectionTitle(doc, "APPLICANT INFORMATION", y);
-            const gap = 8;
+            const gap = 6;
             const columnWidth = (CONTENT_WIDTH - gap) / 2;
             field(doc, "Full Name", data.fullName, MARGIN, y, columnWidth);
             field(doc, "Email Address", data.email, MARGIN + columnWidth + gap, y, columnWidth);
