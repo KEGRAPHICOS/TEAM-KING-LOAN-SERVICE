@@ -213,7 +213,7 @@ function createApplicationPDF(application, outputPath) {
             }
             field(doc, "Date", formatDateWithLiveTime(data.signatureDate || data.createdAt), MARGIN + columnWidth + gap, y, columnWidth);
 
-            const footerY = PAGE_HEIGHT - 38;
+            const footerY = PAGE_HEIGHT - 45;
             doc.moveTo(MARGIN, footerY).lineTo(PAGE_WIDTH - MARGIN, footerY).strokeColor(COLORS.border).lineWidth(0.7).stroke();
             doc.font("Helvetica").fontSize(5)fillColor(COLORS.muted).text("Service To Human Is Service To Jesus", MARGIN, footerY + 20, { width: 250, lineBreak: false });
             doc.font("Helvetica").fontSize(5).fillColor(COLORS.muted).text("LOAN APPLICATION DOCUMENT • PAGE 1 OF 1", PAGE_WIDTH - MARGIN - 190, footerY + 14, { width: 190, align: "right", lineBreak: false });
