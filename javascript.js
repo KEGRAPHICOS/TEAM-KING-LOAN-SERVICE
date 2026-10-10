@@ -652,28 +652,37 @@ async function submitLoanApplication() {
     }
 
     const details = [
-        "TEAM KING LOAN SERVICE — LOAN REQUEST",
+        "*TEAM KING LOAN SERVICE*",
         "",
-        "APPLICANT INFORMATION",
+
+        "*NEW LOAN APPLICATION*",
+        "",
+        "━━━━━━━━━━━━━━━━━━",
+        "",
+        "*APPLICANT INFORMATION*",
         `First Name: ${getValue("fname")}`,
         `Last Name: ${getValue("lname")}`,
         `Email: ${getValue("email")}`,
         `MoMo Number: ${getValue("mphone")}`,
         `MoMo Network: ${getValue("type1")}`,
         "",
-        "LOAN DETAILS",
+        "━━━━━━━━━━━━━━━━━━",
+        "",
+        "*LOAN DETAILS*",
         `Requested Amount: GHS ${amount.toFixed(2)}`,
         `Loan Type: ${getValue("type")}`,
         `Interest (20%): GHS ${interest.toFixed(2)}`,
         `Total Amount Payable: GHS ${total.toFixed(2)}`,
         "",
-        "GUARANTOR INFORMATION",
+        "━━━━━━━━━━━━━━━━━━",
+        "",
+        "*GUARANTOR INFORMATION*",
         `Full Name: ${getValue("gname")}`,
         `Phone: ${getValue("gphone")}`,
         `Address: ${getValue("gaddress")}`,
         `Relationship: ${getValue("grelationship")}`,
         "",
-        "I am submitting this loan request for review."
+        "*SERVICE TO HUMAN IS SERVICE TO JESUS*"
     ];
 
     const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(details.join("\n"))}`;
